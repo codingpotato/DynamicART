@@ -1,0 +1,850 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Examples - Dynamic Art for iOS</title>
+    <link href="css/local.css" rel="stylesheet" type="text/css" />    <link href="css/blocks.css" rel="stylesheet" type="text/css" />
+    <script>
+		function code(id_number) {
+			if (document.getElementById(id_number+"_button_code").innerHTML=="Show Code") {
+				document.getElementById(id_number+"_button_code").innerHTML="Hide Code";
+				document.getElementById(id_number+"_code").className="code";
+			} else {
+				document.getElementById(id_number+"_button_code").innerHTML="Show Code";
+				document.getElementById(id_number+"_code").className="code hidden";
+			}
+		}
+	</script>
+  </head>
+  <body>
+  	<iframe id="download" name="download"></iframe>
+    <div id="container">
+      <div id="main">
+      			<div id="content">
+<h1>Basic Examples</h1>
+
+<div class="example_box"><img src="images/examples/3.png" /><div class="intro"><h1>Calculator</h1><p> This example simulates <strong>a basic calculator</strong> with four operations. </p>
+<p> <strong>Note:</strong> This is a very long program. Maybe you can not understand it clearly. You can just import this example to feel the power of Dynamic Art for iOS. </p><a class="import" href="examples/3.html" target="download"><button>Open in Dynamic ART</button></a><button id="3_button_code" onClick="code('3')">Show Code</button></div><div class="clear"></div><div id="3_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Turn off auto refresh </span>
+<span> Hide </span>
+<span> Clear by color  #RGB(FFFFFF) HSB(0000FF) A(FF)# </span>
+<span> Refresh </span>
+<span> Set line color  #RGB(0) HSB(000000) A(FF)# </span>
+<span> Set line width  5 </span>
+<span> Set font  !Courier-Bold! </span>
+<span> Set font size  100 </span>
+<span> Set value of  @origin x@  to  [ [ $screen width$  /  2 ]  -  300 ] </span>
+<span> Set value of  @origin y@  to  [ [ $screen height$  /  2 ]  -  180 ] </span>
+<span> Set fill color  #RGB(EFFF) HSB(82FFFF) A(FF)# </span>
+<span> Loop  @number@  from  1  to  9  step  1 </span>
+<span>     Set value of  @index x@  to  [ [ $number$  -  1 ]  mod  3 ] </span>
+<span>     Set value of  @index y@  to  [ [ [ $number$  -  $index x$ ]  -  1 ]  /  3 ] </span>
+<span>     Set value of  @inner origin x@  to  [ $origin x$  +  [ $index x$  X  120 ] ] </span>
+<span>     Set value of  @inner origin y@  to  [ $origin y$  +  [ $index y$  X  120 ] ] </span>
+<span>     Rect at x  $inner origin x$  y  $inner origin y$  width  120  heigth  120 </span>
+<span>     Write  $number$  at center x  [ $inner origin x$  +  60 ]  y  [ $inner origin y$  +  60 ] </span>
+<span> End</span>
+<span> Set value of  @lower origin y@  to  [ $origin y$  +  360 ] </span>
+<span> Rect at x  $origin x$  y  $lower origin y$  width  120  heigth  120 </span>
+<span> Write  "."  at center x  [ $origin x$  +  60 ]  y  [ $lower origin y$  +  60 ] </span>
+<span> Rect at x  [ $origin x$  +  120 ]  y  $lower origin y$  width  120  heigth  120 </span>
+<span> Write  "0"  at center x  [ $origin x$  +  180 ]  y  [ $lower origin y$  +  60 ] </span>
+<span> Rect at x  [ $origin x$  +  240 ]  y  $lower origin y$  width  120  heigth  120 </span>
+<span> Write  "&lt;"  at center x  [ $origin x$  +  300 ]  y  [ $lower origin y$  +  60 ] </span>
+<span> Set value of  @right origin x@  to  [ $origin x$  +  360 ] </span>
+<span> Rect at x  $right origin x$  y  $origin y$  width  120  heigth  120 </span>
+<span> Write  "+"  at center x  [ $right origin x$  +  60 ]  y  [ $origin y$  +  60 ] </span>
+<span> Rect at x  [ $right origin x$  +  120 ]  y  $origin y$  width  120  heigth  120 </span>
+<span> Write  "-"  at center x  [ $right origin x$  +  180 ]  y  [ $origin y$  +  60 ] </span>
+<span> Rect at x  $right origin x$  y  [ $origin y$  +  120 ]  width  120  heigth  120 </span>
+<span> Write  "*"  at center x  [ $right origin x$  +  60 ]  y  [ $origin y$  +  180 ] </span>
+<span> Rect at x  [ $right origin x$  +  120 ]  y  [ $origin y$  +  120 ]  width  120  heigth  120 </span>
+<span> Write  "/"  at center x  [ $right origin x$  +  180 ]  y  [ $origin y$  +  180 ] </span>
+<span> Rect at x  $right origin x$  y  [ $origin y$  +  240 ]  width  240  heigth  120 </span>
+<span> Write  "="  at center x  [ $right origin x$  +  120 ]  y  [ $origin y$  +  300 ] </span>
+<span> Rect at x  $right origin x$  y  [ $origin y$  +  360 ]  width  240  heigth  120 </span>
+<span> Write  "Clr"  at center x  [ $right origin x$  +  120 ]  y  [ $origin y$  +  420 ] </span>
+<span> Set fill color  #RGB(EFFF00) HSB(2DFFFF) A(FF)# </span>
+<span> Set value of  @has point@  to  False </span>
+<span> Set value of  @integer@  to  0 </span>
+<span> Set value of  @symbol@  to  "" </span>
+<span> Set value of  @has symbol@  to  False </span>
+<span> Set value of  @overflow@  to  False </span>
+<span> Perform  (Flip) </span>
+<span>---------- Blockette  Flip ----------</span>
+<span> Rect at x  $origin x$  y  [ $origin y$  -  120 ]  width  600  heigth  120 </span>
+<span> If  $overflow$ </span>
+<span>     Write  "Overflow"  at origin x  [ $origin x$  +  60 ]  y  [ $origin y$  -  120 ] </span>
+<span>     Set value of  @overflow@  to  False </span>
+<span> Else </span>
+<span>     If  $has symbol$ </span>
+<span>         Write  $symbol$  at origin x  [ $origin x$  +  5 ]  y  [ $origin y$  -  120 ] </span>
+<span>     End</span>
+<span>     Perform  (Make string) </span>
+<span>     Write  $string$  at origin x  [ $origin x$  +  60 ]  y  [ $origin y$  -  120 ] </span>
+<span>     Set value of  @show result@  to  False </span>
+<span> End</span>
+<span> Refresh </span>
+<span>---------- Blockette  Add Digit ----------</span>
+<span> Perform  (Make string) </span>
+<span> Split  $string$  to list  {tmp}  with delimiter  "" </span>
+<span> If  [ [ Length of list  {tmp} ]  &lt;  9 ] </span>
+<span>     If  $has point$ </span>
+<span>         Add  $digit$  to list  {after point} </span>
+<span>     Else </span>
+<span>         Set value of  @integer@  to  [ [ $integer$  X  10 ]  +  $digit$ ] </span>
+<span>     End</span>
+<span>     Perform  (Flip) </span>
+<span> End</span>
+<span>---------- Blockette  Remove digit ----------</span>
+<span> If  [ Not  [ $show result$  or  $overflow$ ] ] </span>
+<span>     Perform  (Is empty) </span>
+<span>     If  [ $has symbol$  and  $empty$ ] </span>
+<span>         Set value of  @integer@  to  $integer 2$ </span>
+<span>         Set value of  @has point@  to  $has point 2$ </span>
+<span>         Copy list  {after point 2}  to list  {after point} </span>
+<span>         Set value of  @has symbol@  to  False </span>
+<span>     Else </span>
+<span>         If  $has point$ </span>
+<span>             If  [ [ Length of list  {after point} ]  =  0 ] </span>
+<span>                 Set value of  @has point@  to  False </span>
+<span>             Else </span>
+<span>                 Remove last item of list  {after point} </span>
+<span>             End</span>
+<span>         Else </span>
+<span>             Set value of  @integer@  to  [ [ $integer$  -  [ $integer$  mod  10 ] ]  /  10 ] </span>
+<span>         End</span>
+<span>     End</span>
+<span> End</span>
+<span> Perform  (Flip) </span>
+<span>---------- Blockette  Add point ----------</span>
+<span> If  [ Not  $has point$ ] </span>
+<span>     Set value of  @has point@  to  True </span>
+<span>     Clear list  {after point} </span>
+<span> End</span>
+<span> Perform  (Flip) </span>
+<span>---------- Blockette  Make string ----------</span>
+<span> If  $has point$ </span>
+<span>     Set value of  @string@  to  [ Join  [ Join  $integer$  and  "." ]  and  [ Join list  {after point}  with delimiter  "" ] ] </span>
+<span> Else </span>
+<span>     Set value of  @string@  to  $integer$ </span>
+<span> End</span>
+<span>---------- Blockette  Set symbol ----------</span>
+<span> If  $has symbol$ </span>
+<span>     Perform  (Calculate) </span>
+<span> End</span>
+<span> Set value of  @symbol@  to  $coming symbol$ </span>
+<span> Set value of  @has symbol@  to  True </span>
+<span> Perform  (Flip) </span>
+<span> Set value of  @show result@  to  True </span>
+<span> Set value of  @integer 2@  to  $integer$ </span>
+<span> Set value of  @has point 2@  to  $has point$ </span>
+<span> Copy list  {after point}  to list  {after point 2} </span>
+<span> Perform  (Clear number) </span>
+<span>---------- Blockette  Calculate ----------</span>
+<span> Perform  (Make string) </span>
+<span> Perform  (Make string 2) </span>
+<span> If  [ $symbol$  =  "+" ] </span>
+<span>     Set value of  @output@  to  [ $string 2$  +  $string$ ] </span>
+<span> End</span>
+<span> If  [ $symbol$  =  "-" ] </span>
+<span>     Set value of  @output@  to  [ $string 2$  -  $string$ ] </span>
+<span> End</span>
+<span> If  [ $symbol$  =  "*" ] </span>
+<span>     Set value of  @output@  to  [ $string 2$  X  $string$ ] </span>
+<span> End</span>
+<span> If  [ $symbol$  =  "/" ] </span>
+<span>     Set value of  @output@  to  [ $string 2$  /  $string$ ] </span>
+<span> End</span>
+<span> Split  $output$  to list  {tmp}  with delimiter  "." </span>
+<span> Set value of  @integer@  to  [ 0  th of list  {tmp} ] </span>
+<span> Clear list  {after point} </span>
+<span> If  [ [ Length of list  {tmp} ]  =  2 ] </span>
+<span>     Split  $integer$  to list  {integer list}  with delimiter  "" </span>
+<span>     Set value of  @after point length@  to  [ 8  -  [ Length of list  {integer list} ] ] </span>
+<span>     Split  [ 1  th of list  {tmp} ]  to list  {after point tmp}  with delimiter  "" </span>
+<span>     If  [ [ Length of list  {after point tmp} ]  &gt;  $after point length$ ] </span>
+<span>         If  [ [ $after point length$  th of list  {after point tmp} ]  &gt;=  5 ] </span>
+<span>             Replace  [ $after point length$  -  1 ]  th of list  {after point tmp}  with  [ [ [ $after point length$  -  1 ]  th of list  {after point tmp} ]  +  1 ] </span>
+<span>             Loop  @index@  from  [ $after point length$  -  1 ]  to  0  step  -1 </span>
+<span>                 If  [ [ $index$  th of list  {after point tmp} ]  &lt;  10 ] </span>
+<span>                     Break </span>
+<span>                 End</span>
+<span>                 Replace  $index$  th of list  {after point tmp}  with  [ [ $index$  th of list  {after point tmp} ]  -  10 ] </span>
+<span>                 If  [ $index$  &gt;  0 ] </span>
+<span>                     Replace  [ $index$  -  1 ]  th of list  {after point tmp}  with  [ [ [ $index$  -  1 ]  th of list  {after point tmp} ]  +  1 ] </span>
+<span>                 Else </span>
+<span>                     Set value of  @integer@  to  [ $integer$  +  1 ] </span>
+<span>                 End</span>
+<span>             End</span>
+<span>         End</span>
+<span>         Loop  @index@  from  [ $after point length$  -  1 ]  to  0  step  -1 </span>
+<span>             If  [ Not  [ $index$  th of list  {after point tmp} ]  =  0 ] </span>
+<span>                 Break </span>
+<span>             End</span>
+<span>             Set value of  @after point length@  to  [ $after point length$  -  1 ] </span>
+<span>         End</span>
+<span>     Else </span>
+<span>         Set value of  @after point length@  to  [ Length of list  {after point tmp} ] </span>
+<span>     End</span>
+<span>     If  [ $after point length$  =  0 ] </span>
+<span>         Set value of  @has point@  to  False </span>
+<span>     Else </span>
+<span>         Set value of  @has point@  to  True </span>
+<span>         Loop  @index@  from  0  to  [ $after point length$  -  1 ]  step  1 </span>
+<span>             Add  [ $index$  th of list  {after point tmp} ]  to list  {after point} </span>
+<span>         End</span>
+<span>     End</span>
+<span> Else </span>
+<span>     Set value of  @has point@  to  False </span>
+<span> End</span>
+<span> Set value of  @has symbol@  to  False </span>
+<span> If  [ [ 1000000000  &lt;=  $integer$ ]  or  [ -100000000  &gt;=  $integer$ ] ] </span>
+<span>     Perform  (Clear number) </span>
+<span>     Set value of  @overflow@  to  True </span>
+<span> End</span>
+<span>---------- Blockette  Make string 2 ----------</span>
+<span> If  $has point 2$ </span>
+<span>     Set value of  @string 2@  to  [ Join  [ Join  $integer 2$  and  "." ]  and  [ Join list  {after point 2}  with delimiter  "" ] ] </span>
+<span> Else </span>
+<span>     Set value of  @string 2@  to  $integer 2$ </span>
+<span> End</span>
+<span>---------- Blockette  Is empty ----------</span>
+<span> Set value of  @empty@  to  [ [ $integer$  =  0 ]  and  [ Not  $has point$ ] ] </span>
+<span>---------- Blockette  Clear number ----------</span>
+<span> Set value of  @integer@  to  0 </span>
+<span> Set value of  @has point@  to  False </span>
+<span> Clear list  {after point} </span>
+<span>---------- Blockette  Clear ----------</span>
+<span> If  [ Not  [ $show result$  or  $overflow$ ] ] </span>
+<span>     Perform  (Is empty) </span>
+<span>     If  [ $has symbol$  and  $empty$ ] </span>
+<span>         Set value of  @integer@  to  $integer 2$ </span>
+<span>         Set value of  @has point@  to  $has point 2$ </span>
+<span>         Copy list  {after point 2}  to list  {after point} </span>
+<span>         Set value of  @has symbol@  to  False </span>
+<span>     Else </span>
+<span>         Perform  (Clear number) </span>
+<span>     End</span>
+<span> End</span>
+<span> Perform  (Flip) </span>
+<span>---------- When touch begin ----------</span>
+<span> Set value of  @current touch x@  to  $touch x$ </span>
+<span> Set value of  @current touch y@  to  $touch y$ </span>
+<span> If  [ Is x  $current touch x$  y  $current touch y$  in rect x  $origin x$  y  $origin y$  w  360  h  360 ] </span>
+<span>     Set value of  @current touch x@  to  [ $current touch x$  -  $origin x$ ] </span>
+<span>     Set value of  @current touch y@  to  [ $current touch y$  -  $origin y$ ] </span>
+<span>     Set value of  @touch index x@  to  [ floor  (  [ $current touch x$  /  120 ]  ) ] </span>
+<span>     Set value of  @touch index y@  to  [ floor  (  [ $current touch y$  /  120 ]  ) ] </span>
+<span>     Set value of  @digit@  to  [ [ [ $touch index y$  X  3 ]  +  $touch index x$ ]  +  1 ] </span>
+<span>     Perform  (Add Digit) </span>
+<span> End</span>
+<span> If  [ Is x  $current touch x$  y  $current touch y$  in rect x  $origin x$  y  $lower origin y$  w  120  h  200120 ] </span>
+<span>     Perform  (Add point) </span>
+<span> End</span>
+<span> If  [ Is x  $current touch x$  y  $current touch y$  in rect x  [ $origin x$  +  120 ]  y  $lower origin y$  w  120  h  120 ] </span>
+<span>     Set value of  @digit@  to  0 </span>
+<span>     Perform  (Add Digit) </span>
+<span> End</span>
+<span> If  [ Is x  $current touch x$  y  $current touch y$  in rect x  [ $origin x$  +  240 ]  y  $lower origin y$  w  120  h  120 ] </span>
+<span>     Perform  (Remove digit) </span>
+<span> End</span>
+<span> If  [ Is x  $current touch x$  y  $current touch y$  in rect x  $right origin x$  y  $origin y$  w  120  h  120 ] </span>
+<span>     Set value of  @coming symbol@  to  "+" </span>
+<span>     Perform  (Set symbol) </span>
+<span> End</span>
+<span> If  [ Is x  $current touch x$  y  $current touch y$  in rect x  [ $right origin x$  +  120 ]  y  $origin y$  w  120  h  120 ] </span>
+<span>     Set value of  @coming symbol@  to  "-" </span>
+<span>     Perform  (Set symbol) </span>
+<span> End</span>
+<span> If  [ Is x  $current touch x$  y  $current touch y$  in rect x  $right origin x$  y  [ $origin y$  +  120 ]  w  120  h  120 ] </span>
+<span>     Set value of  @coming symbol@  to  "*" </span>
+<span>     Perform  (Set symbol) </span>
+<span> End</span>
+<span> If  [ Is x  $current touch x$  y  $current touch y$  in rect x  [ $right origin x$  +  120 ]  y  [ $origin y$  +  120 ]  w  120  h  120 ] </span>
+<span>     Set value of  @coming symbol@  to  "/" </span>
+<span>     Perform  (Set symbol) </span>
+<span> End</span>
+<span> If  [ Is x  $current touch x$  y  $current touch y$  in rect x  $right origin x$  y  [ $origin y$  +  240 ]  w  240  h  120 ] </span>
+<span>     If  $has symbol$ </span>
+<span>         Perform  (Calculate) </span>
+<span>         Perform  (Flip) </span>
+<span>     End</span>
+<span> End</span>
+<span> If  [ Is x  $current touch x$  y  $current touch y$  in rect x  $right origin x$  y  [ $origin y$  +  360 ]  w  240  h  120 ] </span>
+<span>     Perform  (Clear) </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/18.png" /><div class="intro"><h1>Circle Spire</h1><p> <strong>A circle spiring out</strong> with border of all colors. Its trail is so gentle that the whole image looks like a <strong>magic light</strong> spreading out from the very center. </p><a class="import" href="examples/18.html" target="download"><button>Open in Dynamic ART</button></a><button id="18_button_code" onClick="code('18')">Show Code</button></div><div class="clear"></div><div id="18_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Pen up </span>
+<span> Set fill color  #RGB(0) HSB(000000) A(FF)# </span>
+<span> Set value of  @rounds@  to  150 </span>
+<span> Set value of  @size@  to  60 </span>
+<span> Set value of  @r@  to  20 </span>
+<span> Set value of  @a@  to  0 </span>
+<span> Set value of  @r step@  to  [ $size$  /  $rounds$ ] </span>
+<span> Set value of  @a step@  to  [ 360  /  $rounds$ ] </span>
+<span> While  [ $r$  &lt;  700 ]  do </span>
+<span>     Set line color  [ Color of red  [ Random of  150  to  255 ]  green  [ Random of  150  to  255 ]  blue  [ Random of  150  to  255 ]  Alpha  255 ] </span>
+<span>     Go home </span>
+<span>     Turn right  $a$ </span>
+<span>     Move forward  $r$ </span>
+<span>     Ellipse at center x  $current x$  y  $current y$  radius h  $size$  v  $size$ </span>
+<span>     Set value of  @r@  to  [ $r$  +  $r step$ ] </span>
+<span>     Set value of  @a@  to  [ $a$  +  $a step$ ] </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/1.png" /><div class="intro"><h1>Clock</h1><p> This example simulates <strong>a classic clock</strong> with three colorful hands: the green hour hand, the black minute hand and the red second hand. </p><a class="import" href="examples/1.html" target="download"><button>Open in Dynamic ART</button></a><button id="1_button_code" onClick="code('1')">Show Code</button></div><div class="clear"></div><div id="1_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Turn off auto refresh </span>
+<span> Hide </span>
+<span> Clear by color  #RGB(FFFFFF) HSB(0000FF) A(FF)# </span>
+<span> Pen up </span>
+<span> Set line color  #RGB(0) HSB(000000) A(FF)# </span>
+<span> Set line join type  Round </span>
+<span> Set font size  40 </span>
+<span> Set font  !MarkerFelt-Wide! </span>
+<span> Loop  @dynamic@  from  1  to  12  step  1 </span>
+<span>     Turn right  30 </span>
+<span>     Move forward  250 </span>
+<span>     Write  $dynamic$  at center x  $current x$  y  $current y$ </span>
+<span>     Move backward  250 </span>
+<span> End</span>
+<span> Pen down </span>
+<span> Loop forever </span>
+<span>     Set value of  @second@  to  [ [ Second ]  X  6 ] </span>
+<span>     Set value of  @minute@  to  [ [ [ Minute ]  X  6 ]  +  [ $second$  /  60 ] ] </span>
+<span>     Set value of  @hour@  to  [ [ [ Hour ]  X  30 ]  +  [ $minute$  /  12 ] ] </span>
+<span>     Set line width  0 </span>
+<span>     Set fill color  #RGB(FFFFFF) HSB(0000FF) A(FF)# </span>
+<span>     Ellipse at center x  $current x$  y  $current y$  radius h  210  v  210 </span>
+<span>     Set line width  10 </span>
+<span>     Set line color  #RGB(FF1E) HSB(5AFFFF) A(FF)# </span>
+<span>     Turn right  $hour$ </span>
+<span>     Move forward  75 </span>
+<span>     Move backward  75 </span>
+<span>     Turn left  $hour$ </span>
+<span>     Set line width  5 </span>
+<span>     Set line color  #RGB(0) HSB(000000) A(FF)# </span>
+<span>     Turn right  $minute$ </span>
+<span>     Move forward  150 </span>
+<span>     Move backward  150 </span>
+<span>     Turn left  $minute$ </span>
+<span>     Set line width  2 </span>
+<span>     Set line color  #RGB(FF0000) HSB(00FFFF) A(FF)# </span>
+<span>     Turn right  $second$ </span>
+<span>     Move forward  200 </span>
+<span>     Move backward  200 </span>
+<span>     Turn left  $second$ </span>
+<span>     Set line width  0 </span>
+<span>     Set fill color  #RGB(FF0000) HSB(00FFFF) A(FF)# </span>
+<span>     Ellipse at center x  $current x$  y  $current y$  radius h  10  v  10 </span>
+<span>     Refresh </span>
+<span>     Wait  0.75  seconds </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/6.png" /><div class="intro"><h1>Color Feathers</h1><p> This example draws a <strong>16-colored cycle</strong> as 16 smooth curves. These curves look like bird feathers. </p><a class="import" href="examples/6.html" target="download"><button>Open in Dynamic ART</button></a><button id="6_button_code" onClick="code('6')">Show Code</button></div><div class="clear"></div><div id="6_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Set line join type  Round </span>
+<span> Loop  @outer@  from  0  to  359  step  24 </span>
+<span>     Set line width  0.5 </span>
+<span>     Set line color  [ Color of hue  [ [ $outer$  /  360 ]  X  256 ]  saturation  255  brightness  255  Alpha  255 ] </span>
+<span>     Pen up </span>
+<span>     Go home </span>
+<span>     Turn right  $outer$ </span>
+<span>     Pen down </span>
+<span>     Loop  @angle@  from  120  to  -120  step  -0.5 </span>
+<span>         If  [ $angle$  &lt;  20 ] </span>
+<span>             Set line width  [ [ 25  -  $angle$ ]  /  10 ] </span>
+<span>         End</span>
+<span>         Move forward  [ [ 120  -  [ abs  (  $angle$  ) ] ]  /  12 ] </span>
+<span>         Turn right  $angle$ </span>
+<span>     End</span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/20.png" /><div class="intro"><h1>Color Tower</h1><p> Color can <strong>grow</strong>, from the bottom of your screen to the top. This examples creates a <strong>growing cylinder with all bright colors</strong>. Want to have a look? Please press the button "Open". </p><a class="import" href="examples/20.html" target="download"><button>Open in Dynamic ART</button></a><button id="20_button_code" onClick="code('20')">Show Code</button></div><div class="clear"></div><div id="20_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Pen up </span>
+<span> Move backward  225 </span>
+<span> Turn left  90 </span>
+<span> Pen down </span>
+<span> Set line width  10 </span>
+<span> Loop  @hue@  from  0  to  255  step  1 </span>
+<span>     Set line color  [ Color of hue  $hue$  saturation  255  brightness  255  Alpha  255 ] </span>
+<span>     Loop  @dynamic@  from  -180  to  179  step  1 </span>
+<span>         Move forward  [ [ [ abs  (  [ cos  (  $dynamic$  ) ]  ) ]  X  1.5 ]  +  [ $dynamic$  /  10000 ] ] </span>
+<span>         Turn left  1 </span>
+<span>     End</span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/10.png" /><div class="intro"><h1>Colorful Paint</h1><p> This is a simple interaction example. Just drug on the screen and enjoy the trails you create with your finger! </p>
+<p> <strong>Attractive Point:</strong> Very amazing gradient color and automatically changed line-width. </p><a class="import" href="examples/10.html" target="download"><button>Open in Dynamic ART</button></a><button id="10_button_code" onClick="code('10')">Show Code</button></div><div class="clear"></div><div id="10_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Set line join type  Round </span>
+<span> Set value of  @hue@  to  0 </span>
+<span>---------- When touch move ----------</span>
+<span> Set line color  [ Color of hue  $hue$  saturation  250  brightness  255  Alpha  255 ] </span>
+<span> Set line width  [ [ atan  (  [ [ Distance from x  $previous touch x$  y  $previous touch y$  to x  $touch x$  y  $touch y$ ]  /  10 ]  ) ]  /  5 ] </span>
+<span> Line from x  $previous touch x$  y  $previous touch y$  to x  $touch x$  y  $touch y$ </span>
+<span> Set value of  @hue@  to  [ [ $hue$  +  1 ]  mod  255 ] </span></code></div></div><div class="example_box"><img src="images/examples/8.png" /><div class="intro"><h1>Electrocardiogram</h1><p> This example simulates the <strong>electrocardiogram</strong> printed in a hospital. It uses a math function combined with random numbers to produce the waveform. </p><a class="import" href="examples/8.html" target="download"><button>Open in Dynamic ART</button></a><button id="8_button_code" onClick="code('8')">Show Code</button></div><div class="clear"></div><div id="8_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Turn off auto refresh </span>
+<span> Hide </span>
+<span> Clear by color  #RGB(E1CFCF) HSB(0014E1) A(FF)# </span>
+<span> Refresh </span>
+<span> Loop  @y base@  from  88  to  $screen height$  step  128 </span>
+<span>     Set line width  1.5 </span>
+<span>     Set line color  #RGB(FF6868) HSB(0096FF) A(FF)# </span>
+<span>     Perform  (Background) </span>
+<span> End</span>
+<span> Refresh </span>
+<span> Turn on auto refresh </span>
+<span> Loop  @y base@  from  88  to  $screen height$  step  128 </span>
+<span>     Set value of  @x base@  to  [ Random of  0  to  $screen width$ ] </span>
+<span>     Set line width  2 </span>
+<span>     Set line color  #RGB(0) HSB(000000) A(FF)# </span>
+<span>     Perform  (Main line) </span>
+<span> End</span>
+<span>---------- Blockette  Background ----------</span>
+<span> Loop  @y@  from  -15  to  65  step  10 </span>
+<span>     Line from x  0  y  [ $y base$  -  $y$ ]  to x  $screen width$  y  [ $y base$  -  $y$ ] </span>
+<span> End</span>
+<span> Loop  @x@  from  -10  to  $screen width$  step  10 </span>
+<span>     Line from x  [ $x$  +  10 ]  y  [ $y base$  +  15 ]  to x  [ $x$  +  10 ]  y  [ $y base$  -  65 ] </span>
+<span> End</span>
+<span>---------- Blockette  Main line ----------</span>
+<span> Pen up </span>
+<span> Move to x  0  y  $y base$ </span>
+<span> Pen down </span>
+<span> Loop  @x@  from  -20  to  $screen width$  step  1 </span>
+<span>     Set value of  @ans 0@  to  [ [ tan  (  [ $x base$  +  $x$ ]  ) ]  /  2 ] </span>
+<span>     Set value of  @answer@  to  [ [ [ [ [ $ans 0$  ^  2 ]  -  [ [ Random of  0  to  4 ]  X  $ans 0$ ] ]  +  0.01 ]  /  [ $ans 0$  ^  2 ] ]  +  [ Random of  0  to  100 ] ] </span>
+<span>     Set value of  @max@  to  [ Random of  500  to  750 ] </span>
+<span>     If  [ $answer$  &gt;  $max$ ] </span>
+<span>         Set value of  @answer@  to  $max$ </span>
+<span>     End</span>
+<span>     Move to x  [ $x$  +  10 ]  y  [ $y base$  -  [ $answer$  /  10 ] ] </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/4.png" /><div class="intro"><h1>Eyes</h1><p> This is a basic example for finger interaction. Click on the screen anywhere you like and you will find the eyes looking at where you have clicked. Move your finger on the screen and the eyes will follow you, too. </p><a class="import" href="examples/4.html" target="download"><button>Open in Dynamic ART</button></a><button id="4_button_code" onClick="code('4')">Show Code</button></div><div class="clear"></div><div id="4_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Set value of  @last refresh@  to  0 </span>
+<span> Set value of  @angle@  to  90 </span>
+<span> Turn off auto refresh </span>
+<span> Hide </span>
+<span> Pen up </span>
+<span> Set line join type  Round </span>
+<span> Set line width  10 </span>
+<span> Move forward  75 </span>
+<span> Arc at center x  $current x$  y  $current y$  radius  150  angle start  130  end  230 </span>
+<span> Set line width  0 </span>
+<span> Set value of  @R@  to  50 </span>
+<span> Set value of  @r@  to  35 </span>
+<span> Perform  (Look at base) </span>
+<span>---------- Blockette  Look ----------</span>
+<span> If  [ [ [ Seconds since 1970 ]  -  $last refresh$ ]  &gt;  [ 1  /  24 ] ] </span>
+<span>     Log  "Hello World" </span>
+<span>     Repeat  2  times </span>
+<span>         Go home </span>
+<span>         Move forward  100 </span>
+<span>         Turn left  $angle$ </span>
+<span>         Move forward  [ $R$  +  20 ] </span>
+<span>         Set fill color  #RGB(FFFFFF) HSB(0000FF) A(FF)# </span>
+<span>         Ellipse at center x  $current x$  y  $current y$  radius h  $R$  v  $R$ </span>
+<span>         Heading to x  $x$  y  $y$ </span>
+<span>         Move forward  [ $R$  -  $r$ ] </span>
+<span>         Set fill color  #RGB(7D7D7D) HSB(00007D) A(FF)# </span>
+<span>         Ellipse at center x  $current x$  y  $current y$  radius h  $r$  v  $r$ </span>
+<span>         Set value of  @angle@  to  [ $angle$  X  -1 ] </span>
+<span>     End</span>
+<span>     Refresh </span>
+<span>     Set value of  @last refresh@  to  [ Seconds since 1970 ] </span>
+<span> End</span>
+<span>---------- Blockette  Look at finger ----------</span>
+<span> Set value of  @x@  to  $touch x$ </span>
+<span> Set value of  @y@  to  $touch y$ </span>
+<span> Perform  (Look) </span>
+<span>---------- Blockette  Look at base ----------</span>
+<span> Go home </span>
+<span> Set value of  @x@  to  $current x$ </span>
+<span> Set value of  @y@  to  $current y$ </span>
+<span> Perform  (Look) </span>
+<span>---------- When touch begin ----------</span>
+<span> Perform  (Look at finger) </span>
+<span>---------- When touch move ----------</span>
+<span> Perform  (Look at finger) </span></code></div></div><div class="example_box"><img src="images/examples/21.png" /><div class="intro"><h1>Fan Flower</h1><p> When you open a <strong>Ancient Chinese fan</strong> which looks like a sector, do you ever think of getting many of them and putting the fans together? This example does this for you, and surprising they are arranged in the shape of a beautiful flower! </p>
+<p> <strong>Attractive Point:</strong> Use random colors for the fans. You can run the example for many times, and every time you will see a totally different flower blooming only for you! </p><a class="import" href="examples/21.html" target="download"><button>Open in Dynamic ART</button></a><button id="21_button_code" onClick="code('21')">Show Code</button></div><div class="clear"></div><div id="21_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Pen up </span>
+<span> Move forward  175 </span>
+<span> Turn left  90 </span>
+<span> Move forward  40 </span>
+<span> Turn right  90 </span>
+<span> Pen down </span>
+<span> Repeat  12  times </span>
+<span>     Set line color  [ Color of hue  [ Random of  0  to  255 ]  saturation  255  brightness  255  Alpha  255 ] </span>
+<span>     Repeat  75  times </span>
+<span>         Set line width  2 </span>
+<span>         Move forward  100 </span>
+<span>         Move backward  100 </span>
+<span>         Turn right  2 </span>
+<span>     End</span>
+<span>     Pen up </span>
+<span>     Move forward  250 </span>
+<span>     Pen down </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/12.png" /><div class="intro"><h1>Flower</h1><p> With a few commands to the turtle, you can create an <strong>eight-petaled flower</strong> with gradient color. Come and explore this surprisingly short example. </p><a class="import" href="examples/12.html" target="download"><button>Open in Dynamic ART</button></a><button id="12_button_code" onClick="code('12')">Show Code</button></div><div class="clear"></div><div id="12_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Pen up </span>
+<span> Move backward  50 </span>
+<span> Turn left  90 </span>
+<span> Move forward  125 </span>
+<span> Turn right  90 </span>
+<span> Pen down </span>
+<span> Set line width  2 </span>
+<span> Set value of  @dynamic@  to  0 </span>
+<span> Repeat  8  times </span>
+<span>     Turn right  45 </span>
+<span>     Repeat  7  times </span>
+<span>         Repeat  90  times </span>
+<span>             Set value of  @dynamic@  to  [ $dynamic$  +  [ 256  /  5040 ] ] </span>
+<span>             Set line color  [ Color of hue  $dynamic$  saturation  255  brightness  255  Alpha  255 ] </span>
+<span>             Move forward  5 </span>
+<span>             Turn right  2 </span>
+<span>         End</span>
+<span>         Turn right  90 </span>
+<span>     End</span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/13.png" /><div class="intro"><h1>Gravity Ball</h1><p> A colorful ball is dropping down to the ground! Want to see how it speeds up before hit the ground? Come and pick this example. </p><a class="import" href="examples/13.html" target="download"><button>Open in Dynamic ART</button></a><button id="13_button_code" onClick="code('13')">Show Code</button></div><div class="clear"></div><div id="13_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Pen up </span>
+<span> Move to x  [ $screen width$  /  2 ]  y  [ [ $screen height$  /  2 ]  -  250 ] </span>
+<span> Set value of  @origin x@  to  [ [ $screen width$  /  2 ]  -  50 ] </span>
+<span> Set value of  @origin y@  to  [ [ $screen height$  /  2 ]  -  300 ] </span>
+<span> Set line width  0 </span>
+<span> Loop forever </span>
+<span>     Turn left  180 </span>
+<span>     Loop  @dynamic@  from  1  to  30  step  1 </span>
+<span>         Set fill color  [ Color of hue  [ Random of  0  to  255 ]  saturation  [ Random of  190  to  255 ]  brightness  [ Random of  190  to  255 ]  Alpha  255 ] </span>
+<span>         Move forward  $dynamic$ </span>
+<span>         Ellipse at center x  $current x$  y  $current y$  radius h  10  v  10 </span>
+<span>         Set fill color  #RGB(0) HSB(000000) A(14)# </span>
+<span>         Rect at x  $origin x$  y  $origin y$  width  100  heigth  700 </span>
+<span>     End</span>
+<span>     Turn left  180 </span>
+<span>     Loop  @dynamic@  from  30  to  1  step  -1 </span>
+<span>         Set fill color  [ Color of hue  [ Random of  0  to  255 ]  saturation  [ Random of  190  to  255 ]  brightness  [ Random of  190  to  255 ]  Alpha  255 ] </span>
+<span>         Move forward  $dynamic$ </span>
+<span>         Ellipse at center x  $current x$  y  $current y$  radius h  10  v  10 </span>
+<span>         Set fill color  #RGB(0) HSB(000000) A(14)# </span>
+<span>         Rect at x  $origin x$  y  $origin y$  width  100  heigth  700 </span>
+<span>     End</span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/14.png" /><div class="intro"><h1>Hexagon</h1><p> Create a colorful <strong>hexagram</strong> inside a <strong>hexagon</strong>. This code is extremely short and easy for starters. </p><a class="import" href="examples/14.html" target="download"><button>Open in Dynamic ART</button></a><button id="14_button_code" onClick="code('14')">Show Code</button></div><div class="clear"></div><div id="14_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Loop  @i@  from  175  to  10  step  -5 </span>
+<span>     Set line color  [ Color of hue  [ [ $i$  /  175 ]  X  256 ]  saturation  255  brightness  255  Alpha  255 ] </span>
+<span>     Repeat  6  times </span>
+<span>         Repeat  6  times </span>
+<span>             Move forward  $i$ </span>
+<span>             Turn left  60 </span>
+<span>         End</span>
+<span>         Turn left  60 </span>
+<span>     End</span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/15.png" /><div class="intro"><h1>Modern</h1><p> During the Modern Age, buildings coming out from every corner in the world, breaking the earth surface. You can experience the growing from this small world model. </p>
+<p> <strong>Attractive Point:</strong> Colorful "buildings" of different height. </p><a class="import" href="examples/15.html" target="download"><button>Open in Dynamic ART</button></a><button id="15_button_code" onClick="code('15')">Show Code</button></div><div class="clear"></div><div id="15_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Set line width  2 </span>
+<span> Loop forever </span>
+<span>     Pen up </span>
+<span>     Go home </span>
+<span>     Turn right  [ Random of  0  to  360 ] </span>
+<span>     Set line color  [ Random color ] </span>
+<span>     Move forward  60 </span>
+<span>     Pen down </span>
+<span>     Move forward  [ Random of  0  to  250 ] </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/7.png" /><div class="intro"><h1>Music Bar</h1><p> This is a Music Bar where you can <strong>choose songs you like and listen to them</strong>. We now provide four songs: <br />
+Jingle Bells, Mary Had a Little Lamb, Edelweiss, Do Re Mi </p>
+<p> After you start the program, click on the songs' names to play them. Click on "Stop" to stop any song now playing. </p><a class="import" href="examples/7.html" target="download"><button>Open in Dynamic ART</button></a><button id="7_button_code" onClick="code('7')">Show Code</button></div><div class="clear"></div><div id="7_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Turn off auto refresh </span>
+<span> Hide </span>
+<span> Set line width  20 </span>
+<span> Set font  !Zapfino! </span>
+<span> Set font size  43 </span>
+<span> Set value of  @half x@  to  [ $current x$  /  2 ] </span>
+<span> Set value of  @one half x@  to  [ $screen width$  -  $half x$ ] </span>
+<span> Set value of  @half y@  to  [ $current y$  /  3 ] </span>
+<span> Set value of  @one half y@  to  [ $screen height$  -  $half y$ ] </span>
+<span> Set value of  @width@  to  [ $current x$  +  50 ] </span>
+<span> Set value of  @height@  to  [ $current y$  +  50 ] </span>
+<span> Set fill color  #RGB(BCC800) HSB(2DFFC8) A(FF)# </span>
+<span> Rect at x  -50  y  -50  width  $width$  heigth  $height$ </span>
+<span> Write  "Jingle Bells"  at center x  $half x$  y  $half y$ </span>
+<span> Set fill color  #RGB(C800BC) HSB(D7FFC8) A(FF)# </span>
+<span> Rect at x  $current x$  y  -50  width  $width$  heigth  $height$ </span>
+<span> Write  "Mary Had"  at center x  $one half x$  y  [ $half y$  -  38 ] </span>
+<span> Write  "a Little Lamb"  at center x  $one half x$  y  [ $half y$  +  38 ] </span>
+<span> Set fill color  #RGB(BCC8) HSB(82FFC8) A(FF)# </span>
+<span> Rect at x  -50  y  $current y$  width  $width$  heigth  $height$ </span>
+<span> Write  "Edelweiss"  at center x  $half x$  y  $one half y$ </span>
+<span> Set fill color  #RGB(C846) HSB(64FFC8) A(FF)# </span>
+<span> Rect at x  $current x$  y  $current y$  width  $width$  heigth  $height$ </span>
+<span> Write  "Do Re Mi"  at center x  $one half x$  y  $one half y$ </span>
+<span> Set fill color  #RGB(C80000) HSB(00FFC8) A(FF)# </span>
+<span> Ellipse at center x  $current x$  y  $current y$  radius h  150  v  150 </span>
+<span> Write  "Stop"  at center x  $current x$  y  $current y$ </span>
+<span> Split  "+E8, +E8, +E4, +E8, +E8, +E4, +E8, +G8, +C8., +D16, +E2, +F8, +F8, +F8., +F16, +F8, +E8, +E8, +E16, +E16, +E8, +D8, +D8, +C8, +D4, +G4, +E8, +E8, +E4, +E8, +E8, +E4, +E8, +G8, +C8., +D16, +E2, +F8, +F8, +F8., +F16, +F8, +E8, +E8, +E16, +E16, +G8, +G8, +F8, +D8, +C2"  to list  {music 0}  with delimiter  "," </span>
+<span> Split  "E8., D16, C8, D8, E8, E8, E4, D8, D8, D4, E8, G8, G4, E8., D16, C8, D8, E8, E8, E8, E8, D8, D8, E8, D8, C2"  to list  {music 1}  with delimiter  "," </span>
+<span> Split  "E2, G4, +D2., +C2, G4, E2, E4, E4, F4, G4, A2., G2., E2, G4, +D2., +C2, G4, F2., E2, G4, G4, A4, B4, +C2., +C2., +D2, G4, B4, A4, G4, E2, G4, +C2., A2, +C4, +D2, +C4, B2., G2., E2, G4, +D2., +C2, G4, F2., E2, G4, G4, A4, B4, +C2., +C2."  to list  {music 2}  with delimiter "," </span>
+<span> Split  "C4., D8, E4., C8, E4, C4, E2, D4., E8, F8, F8, E8, D8, F1, E4., F8, G4., E8, G4, E4, G2, F4., G8, A8, A8, G8, F8, A1, G4., C8, D8, E8, F8, G8, A1, A4., D8, E8, F#8, G8, A8, B1, B4., E8, F#8, G#8, A8, B8, +C2., B8, Bb8, A4, F4, B4, G4, +C1"  to list  {music 3}  with delimiter  "," </span>
+<span> Set value of  @choosing@  to  0 </span>
+<span> Set value of  @index@  to  0 </span>
+<span> Set value of  @playing@  to  False </span>
+<span> Refresh </span>
+<span> Loop forever </span>
+<span>     If  $playing$ </span>
+<span>         If  [ $choosing$  =  0 ] </span>
+<span>             Play music  [ $index$  th of list  {music 0} ] </span>
+<span>             Set value of  @index@  to  [ [ $index$  +  1 ]  mod  [ Length of list  {music 0} ] ] </span>
+<span>         End</span>
+<span>         If  [ $choosing$  =  1 ] </span>
+<span>             Play music  [ $index$  th of list  {music 1} ] </span>
+<span>             Set value of  @index@  to  [ [ $index$  +  1 ]  mod  [ Length of list  {music 1} ] ] </span>
+<span>         End</span>
+<span>         If  [ $choosing$  =  2 ] </span>
+<span>             Play music  [ $index$  th of list  {music 2} ] </span>
+<span>             Set value of  @index@  to  [ [ $index$  +  1 ]  mod  [ Length of list  {music 2} ] ] </span>
+<span>         End</span>
+<span>         If  [ $choosing$  =  3 ] </span>
+<span>             Play music  [ $index$  th of list  {music 3} ] </span>
+<span>             Set value of  @index@  to  [ [ $index$  +  1 ]  mod  [ Length of list  {music 3} ] ] </span>
+<span>         End</span>
+<span>     End</span>
+<span> End</span>
+<span>---------- When touch begin ----------</span>
+<span> Set value of  @current touch x@  to  $touch x$ </span>
+<span> Set value of  @current touch y@  to  $touch y$ </span>
+<span> Set value of  @playing@  to  False </span>
+<span> If  [ [ Distance from x  $current touch x$  y  $current touch y$  to x  $current x$  y  $current y$ ]  &gt;  150 ] </span>
+<span>     Set value of  @index@  to  0 </span>
+<span>     If  [ Is x  $current touch x$  y  $current touch y$  in rect x  0  y  0  w  $current x$  h  $current y$ ] </span>
+<span>         Set  120  beats per minute </span>
+<span>         Set value of  @choosing@  to  0 </span>
+<span>     End</span>
+<span>     If  [ Is x  $current touch x$  y  $current touch y$  in rect x  $current x$  y  0  w  $current x$  h  $current y$ ] </span>
+<span>         Set  90  beats per minute </span>
+<span>         Set value of  @choosing@  to  1 </span>
+<span>     End</span>
+<span>     If  [ Is x  $current touch x$  y  $current touch y$  in rect x  0  y  $current y$  w  $current x$  h  $current y$ ] </span>
+<span>         Set  120  beats per minute </span>
+<span>         Set value of  @choosing@  to  2 </span>
+<span>     End</span>
+<span>     If  [ Is x  $current touch x$  y  $current touch y$  in rect x  $current x$  y  $current y$  w  $current x$  h  $current y$ ] </span>
+<span>         Set  150  beats per minute </span>
+<span>         Set value of  @choosing@  to  3 </span>
+<span>     End</span>
+<span>     Set value of  @playing@  to  True </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/16.png" /><div class="intro"><h1>Pilgrim</h1><p> The turtle walks in a strange trail. You may not realize what it is drawing at first. However, after the drawing is finished, you will find out that it seems like many pilgrims looking at the same place. Isn't that amazing? </p>
+<p> <strong>Note:</strong> This example is a bit abstract. You may disagree whether if looks like pilgrims. But one thing is sure that the program itself is amazing. </p><a class="import" href="examples/16.html" target="download"><button>Open in Dynamic ART</button></a><button id="16_button_code" onClick="code('16')">Show Code</button></div><div class="clear"></div><div id="16_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Pen up </span>
+<span> Turn left  90 </span>
+<span> Move forward  275 </span>
+<span> Turn right  90 </span>
+<span> Pen down </span>
+<span> Loop  @dynamic@  from  0  to  4680  step  1 </span>
+<span>     Set line color  [ Color of hue  [ [ $dynamic$  /  4680 ]  X  256 ]  saturation  255  brightness  255  Alpha  255 ] </span>
+<span>     Move forward  15 </span>
+<span>     Turn right  [ [ sin  (  [ $dynamic$  ^  2 ]  ) ]  X  180 ] </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/22.png" /><div class="intro"><h1>Propeller</h1><p> Here is a way to draw <strong>a colorful propeller</strong>. It's easy, very easy, but most people will never think of this kind of way to draw things. If you don't understand how it is drawn, open this example and have a look! </p><a class="import" href="examples/22.html" target="download"><button>Open in Dynamic ART</button></a><button id="22_button_code" onClick="code('22')">Show Code</button></div><div class="clear"></div><div id="22_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Loop  @i@  from  0  to  180  step  1 </span>
+<span>     Set line color  [ Color of hue  [ [ $i$  /  180 ]  X  255 ]  saturation  255  brightness  255  Alpha  255 ] </span>
+<span>     Go home </span>
+<span>     Turn right  $i$ </span>
+<span>     Move forward  [ 300  X  [ sin  (  [ $i$  X  7 ]  ) ] ] </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/9.png" /><div class="intro"><h1>Ripple</h1><p> Click on the screen to form the <strong>ripples</strong> one by one like what you do on the water surface. </p>
+<p> <strong>Attractive Point:</strong> Amazing colorful ripples. </p>
+<p> <strong>Note:</strong> You can form two ripples next to each other and see what effect will be shown as the two ripples meet. </p><a class="import" href="examples/9.html" target="download"><button>Open in Dynamic ART</button></a><button id="9_button_code" onClick="code('9')">Show Code</button></div><div class="clear"></div><div id="9_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Refresh </span>
+<span> Turn off auto refresh </span>
+<span> Set value of  @width@  to  5 </span>
+<span> Set value of  @max@  to  100 </span>
+<span> Set line width  $width$ </span>
+<span> Loop forever </span>
+<span>     Clear by color  #RGB(0) HSB(000000) A(23)# </span>
+<span>     Loop  @index@  from  0  to  [ [ Length of list  {x} ]  -  1 ]  step  1 </span>
+<span>         Replace  $index$  th of list  {size}  with  [ [ $index$  th of list  {size} ]  +  $width$ ] </span>
+<span>         If  [ [ $index$  th of list  {size} ]  &gt;  $max$ ] </span>
+<span>             Remove  $index$  th of list  {x} </span>
+<span>             Remove  $index$  th of list  {y} </span>
+<span>             Remove  $index$  th of list  {size} </span>
+<span>             Remove  $index$  th of list  {hue} </span>
+<span>             Remove  $index$  th of list  {saturation} </span>
+<span>             Remove  $index$  th of list  {brightness} </span>
+<span>         Else </span>
+<span>             Set line color  [ Color of hue  [ $index$  th of list  {hue} ]  saturation  [ $index$  th of list  {saturation} ]  brightness  [ $index$  th of list  {brightness} ]  Alpha  [ 255  X  [ [ $max$  -  [ $index$  th of list  {size} ] ]  /  $max$ ] ] ] </span>
+<span>             Ellipse at center x  [ $index$  th of list  {x} ]  y  [ $index$  th of list  {y} ]  radius h  [ $index$  th of list  {size} ]  v  [ $index$  th of list  {size} ] </span>
+<span>         End</span>
+<span>     End</span>
+<span>     Refresh </span>
+<span> End</span>
+<span>---------- Blockette  Add ----------</span>
+<span> Add  $touch x$  to list  {x} </span>
+<span> Add  $touch y$  to list  {y} </span>
+<span> Add  0  to list  {size} </span>
+<span> Add  [ Random of  0  to  255 ]  to list  {hue} </span>
+<span> Add  [ Random of  200  to  255 ]  to list  {saturation} </span>
+<span> Add  [ Random of  200  to  255 ]  to list  {brightness} </span>
+<span>---------- When touch begin ----------</span>
+<span> Perform  (Add) </span>
+<span>---------- When touch move ----------</span>
+<span> Perform  (Add) </span></code></div></div><div class="example_box"><img src="images/examples/23.png" /><div class="intro"><h1>Slalom Scroll</h1><p> Have you ever experienced a <strong>slalom</strong>? It is a race asking you to ski past several poles placed on the snow. No? It doesn't matter, as you can have a look at it in this example. You can see colorful trails in the snow, from right to the left, gently passed the poles. You can even imagine that you are the one who is in the ski field, trying to get the first prize! </p><a class="import" href="examples/23.html" target="download"><button>Open in Dynamic ART</button></a><button id="23_button_code" onClick="code('23')">Show Code</button></div><div class="clear"></div><div id="23_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Pen up </span>
+<span> Move forward  100 </span>
+<span> Turn right  90 </span>
+<span> Move forward  320 </span>
+<span> Turn left  109 </span>
+<span> Pen down </span>
+<span> Set line width  2 </span>
+<span> Loop  @dynamic@  from  -15  to  1996  step  1 </span>
+<span>     Set line color  [ Color of hue  [ [ [ $dynamic$  +  15 ]  /  2012 ]  X  256 ]  saturation  255  brightness  255  Alpha  255 ] </span>
+<span>     Move forward  10 </span>
+<span>     Turn right  [ 90  X  [ sin  (  $dynamic$  ) ] ] </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/24.png" /><div class="intro"><h1>Soft Pentacle</h1><p> Pentacles are seen everywhere, but have you ever seen a soft pentacle whose horns can be bended? Never? Please have a look at this example as soon as possible! </p><a class="import" href="examples/24.html" target="download"><button>Open in Dynamic ART</button></a><button id="24_button_code" onClick="code('24')">Show Code</button></div><div class="clear"></div><div id="24_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Pen up </span>
+<span> Move backward  50 </span>
+<span> Turn right  90 </span>
+<span> Move forward  40 </span>
+<span> Turn left  90 </span>
+<span> Pen down </span>
+<span> Set line width  2 </span>
+<span> Loop  @dynamic@  from  1  to  1800  step  1 </span>
+<span>     Set line color  [ Color of hue  [ [ [ $dynamic$  -  1 ]  /  1800 ]  X  256 ]  saturation  255  brightness  255  Alpha  255 ] </span>
+<span>     Move forward  25 </span>
+<span>     Turn right  [ $dynamic$  +  0.1 ] </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/19.png" /><div class="intro"><h1>Sphere</h1><p> Come and see <strong>how a sphere grows from the bottom</strong>. A round shape with gradient color from white to blue finally appears on your screen, looking real. You can experience <strong>the 3-D power</strong> of this wonderful app through the drawing of this beautiful smooth shape. </p><a class="import" href="examples/19.html" target="download"><button>Open in Dynamic ART</button></a><button id="19_button_code" onClick="code('19')">Show Code</button></div><div class="clear"></div><div id="19_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Set value of  @size@  to  255 </span>
+<span> Set line width  2 </span>
+<span> Set value of  @dynamic@  to  0 </span>
+<span> While  [ $dynamic$  &lt;=  [ $size$  X  2 ] ]  do </span>
+<span>     Set line color  [ Color of hue  150  saturation  [ 255  -  [ abs  (  [ $size$  -  $dynamic$ ]  ) ] ]  brightness  255  Alpha  255 ] </span>
+<span>     Set value of  @width@  to  [ sqrt  (  [ [ $size$  X  $size$ ]  -  [ [ $size$  -  $dynamic$ ]  X  [ $size$  -  $dynamic$ ] ] ]  ) ] </span>
+<span>     Set value of  @height@  to  [ [ 100  /  $size$ ]  X  $width$ ] </span>
+<span>     Ellipse at center x  $current x$  y  [ $current y$  +  [ $size$  -  $dynamic$ ] ]  radius h  $width$  v  $height$ </span>
+<span>     If  [ [ abs  (  [ $size$  -  $dynamic$ ]  ) ]  &gt;  [ $size$  -  3 ] ] </span>
+<span>         Set value of  @dynamic@  to  [ $dynamic$  +  0.01 ] </span>
+<span>     Else </span>
+<span>         If  [ [ abs  (  [ $size$  -  $dynamic$ ]  ) ]  &gt;  [ $size$  -  40 ] ] </span>
+<span>             Set value of  @dynamic@  to  [ $dynamic$  +  0.2 ] </span>
+<span>         Else </span>
+<span>             Set value of  @dynamic@  to  [ $dynamic$  +  0.5 ] </span>
+<span>         End</span>
+<span>     End</span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/11.png" /><div class="intro"><h1>Spinning</h1><p> What will happen if <strong>six turtles</strong> at the corners of a <strong>hexagon</strong> each moving towards the one to its left? This example will show you the result! </p>
+<p> <strong>Attractive Point:</strong> Amazing spire with <strong>gradient color</strong>. </p>
+<p> <strong>Note:</strong> This example is used for the Dynamic Art for iOS icon. </p><a class="import" href="examples/11.html" target="download"><button>Open in Dynamic ART</button></a><button id="11_button_code" onClick="code('11')">Show Code</button></div><div class="clear"></div><div id="11_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Turn off auto refresh </span>
+<span> Set value of  @points@  to  6 </span>
+<span> Set value of  @size@  to  300 </span>
+<span> Set value of  @dist@  to  5 </span>
+<span> Set value of  @h@  to  255 </span>
+<span> Pen up </span>
+<span> Repeat  $points$  times </span>
+<span>     Move forward  $size$ </span>
+<span>     Add  $current x$  to list  {x list} </span>
+<span>     Add  $current y$  to list  {y list} </span>
+<span>     Move backward  $size$ </span>
+<span>     Turn left  [ 360  /  $points$ ] </span>
+<span> End</span>
+<span> While  [ [ Distance from x  [ 0  th of list  {x list} ]  y  [ 0  th of list  {y list} ]  to x  [ 1  th of list  {x list} ]  y  [ 1  th of list  {y list} ] ]  &gt;  $dist$ ]  do </span>
+<span>     Set line color  [ Color of hue  $h$  saturation  255  brightness  255  Alpha  255 ] </span>
+<span>     Set value of  @h@  to  [ $h$  -  2 ] </span>
+<span>     Polygen by x  {x list}  y  {y list} </span>
+<span>     Loop  @index@  from  0  to  [ $points$  -  1 ]  step  1 </span>
+<span>         Pen up </span>
+<span>         Move to x  [ $index$  th of list  {x list} ]  y  [ $index$  th of list  {y list} ] </span>
+<span>         Heading to x  [ [ [ $index$  +  1 ]  mod  $points$ ]  th of list  {x list} ]  y  [ [ [ $index$  +  1 ]  mod  $points$ ]  th of list  {y list} ] </span>
+<span>         Pen down </span>
+<span>         Move forward  $dist$ </span>
+<span>         Replace  $index$  th of list  {x list}  with  $current x$ </span>
+<span>         Replace  $index$  th of list  {y list}  with  $current y$ </span>
+<span>     End</span>
+<span>     Refresh </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/5.png" /><div class="intro"><h1>Spire</h1><p> A basic and amazing way of using one turtle to form <strong>four spiral arms</strong> at the same time. With just several blocks, you can enjoy an attractive spire formed by only straight lines. </p>
+<p> <strong>Attractive Point:</strong> Particularly chosen colors which are picked randomly but do not look messy. </p><a class="import" href="examples/5.html" target="download"><button>Open in Dynamic ART</button></a><button id="5_button_code" onClick="code('5')">Show Code</button></div><div class="clear"></div><div id="5_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Set line width  2 </span>
+<span> Set value of  @length@  to  0 </span>
+<span> While  [ $length$  &lt;=  450 ]  do </span>
+<span>     Set line color  [ Color of red  [ Random of  150  to  255 ]  green  [ Random of  150  to  255 ]  blue  [ Random of  150  to  255 ]  Alpha  255 ] </span>
+<span>     Set value of  @length@  to  [ $length$  +  2 ] </span>
+<span>     Move forward  $length$ </span>
+<span>     Turn left  90.5 </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/25.png" /><div class="intro"><h1>Square Flower</h1><p> You put many same squares and make one of their corners at the same point. What will you see? A bunch of squares? No, you will see a flower, a square flower! </p><a class="import" href="examples/25.html" target="download"><button>Open in Dynamic ART</button></a><button id="25_button_code" onClick="code('25')">Show Code</button></div><div class="clear"></div><div id="25_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Set line width  3 </span>
+<span> Repeat  24  times </span>
+<span>     Set line color  [ Color of hue  [ Random of  0  to  255 ]  saturation  255  brightness  255  Alpha  255 ] </span>
+<span>     Turn right  15 </span>
+<span>     Repeat  4  times </span>
+<span>         Move forward  200 </span>
+<span>         Turn right  90 </span>
+<span>     End</span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/17.png" /><div class="intro"><h1>Sun</h1><p> A <strong>sun</strong> rises on your screen, made of beautiful, elegant curves. It is red and orange, in order to remind you of the delightful days filled with warm sunshine. </p>
+<p> <strong>Attractive Point:</strong> Use turtle movement to create trails with <strong>changing width, direction and color</strong>. </p><a class="import" href="examples/17.html" target="download"><button>Open in Dynamic ART</button></a><button id="17_button_code" onClick="code('17')">Show Code</button></div><div class="clear"></div><div id="17_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Set value of  @home x@  to  $current x$ </span>
+<span> Set value of  @home y@  to  $current y$ </span>
+<span> Repeat  18  times </span>
+<span>     Pen up </span>
+<span>     Move to x  $home x$  y  $home y$ </span>
+<span>     Turn right  20 </span>
+<span>     Move forward  20 </span>
+<span>     Pen down </span>
+<span>     Set value of  @line width@  to  9 </span>
+<span>     Set value of  @green@  to  -100 </span>
+<span>     Set value of  @step@  to  [ 255  /  175 ] </span>
+<span>     Repeat  150  times </span>
+<span>         Set line width  $line width$ </span>
+<span>         Set line color  [ Color of red  255  green  $green$  blue  0  Alpha  255 ] </span>
+<span>         Move forward  1 </span>
+<span>         Turn left  1 </span>
+<span>         Set value of  @line width@  to  [ $line width$  -  0.03 ] </span>
+<span>         Set value of  @green@  to  [ $green$  +  $step$ ] </span>
+<span>     End</span>
+<span>     Repeat  150  times </span>
+<span>         Set line width  $line width$ </span>
+<span>         Set line color  [ Color of red  255  green  $green$  blue  0  Alpha  255 ] </span>
+<span>         Move forward  2 </span>
+<span>         Turn right  1 </span>
+<span>         Set value of  @line width@  to  [ $line width$  -  0.03 ] </span>
+<span>         Set value of  @green@  to  [ $green$  +  $step$ ] </span>
+<span>     End</span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/2.png" /><div class="intro"><h1>Tree</h1><p> This is a basic example drawing a <strong>fractal</strong>. The fractal forms with many branches each dividing into two new branches, so it looks like a tree. </p><a class="import" href="examples/2.html" target="download"><button>Open in Dynamic ART</button></a><button id="2_button_code" onClick="code('2')">Show Code</button></div><div class="clear"></div><div id="2_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Set value of  @step@  to  1.5 </span>
+<span> Set value of  @distance@  to  200 </span>
+<span> Set value of  @angle@  to  30 </span>
+<span> Pen up </span>
+<span> Move backward  350 </span>
+<span> Pen down </span>
+<span> Perform  (Forward) </span>
+<span>---------- Blockette  Forward ----------</span>
+<span> If  [ $distance$  &gt;  2 ] </span>
+<span>     Move forward  $distance$ </span>
+<span>     Set value of  @distance@  to  [ $distance$  /  $step$ ] </span>
+<span>     Turn left  $angle$ </span>
+<span>     Perform  (Forward) </span>
+<span>     Turn right  [ $angle$  X  2 ] </span>
+<span>     Perform  (Forward) </span>
+<span>     Turn left  $angle$ </span>
+<span>     Set value of  @distance@  to  [ $distance$  X  $step$ ] </span>
+<span>     Move backward  $distance$ </span>
+<span> End</span></code></div></div><div class="example_box"><img src="images/examples/26.png" /><div class="intro"><h1>Wintersweet</h1><p> Wintersweet is a kind of <strong>five-petaled flower blooming in the winter</strong>. This example use big and small wintersweet flowers putting together, and create an amazing image of this kind of flower. </p><a class="import" href="examples/26.html" target="download"><button>Open in Dynamic ART</button></a><button id="26_button_code" onClick="code('26')">Show Code</button></div><div class="clear"></div><div id="26_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Set line width  3 </span>
+<span> Set value of  @i@  to  120 </span>
+<span> While  [ $i$  &gt;  5 ]  do </span>
+<span>     Set line color  [ Color of hue  [ Random of  0  to  255 ]  saturation  255  brightness  255  Alpha  255 ] </span>
+<span>     Repeat  5  times </span>
+<span>         Repeat  8  times </span>
+<span>             Move forward  $i$ </span>
+<span>             Turn right  45 </span>
+<span>         End</span>
+<span>         Turn right  72 </span>
+<span>     End</span>
+<span>     Turn left  [ $i$  /  40 ] </span>
+<span>     Set value of  @i@  to  [ $i$  X  0.95 ] </span>
+<span> End</span></code></div></div>	</div>
+      </div>
+    </div>
+  </body>
+</html>

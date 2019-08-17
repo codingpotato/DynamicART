@@ -1,0 +1,145 @@
+body {
+	counter-reset: titleNumber;
+	font-size: 20px;
+}
+body, div, img, h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+iframe#download {
+	display: none;
+}
+img.icon {
+	position: relative;
+	top: 5px;
+}
+img.screenshot {
+	margin: 10px;
+	border-radius: 15px;
+}
+img.big_screenshot {
+    height: 400px;
+	width: 300px;
+	margin: 5px;
+	border-radius: 5px;
+	box-shadow: 10px 10px 10px #555;
+}
+.clear {
+	clear: both;
+}
+.hidden {
+	display: none;
+}
+
+#container {
+    width: 100%;
+    min-width: 768px;
+    max-width: 1024px;
+    position: absolute;
+    right: 50%;
+}
+#main {
+    background-color: #EEE;
+    box-shadow: black 0 0 7px 1px;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+}
+#content {
+    padding: 10px 10px 20px;
+}
+
+.subtitle {
+	position: relative;
+	border-bottom: 2px solid;
+	margin: 30px 20px 20px 10px;
+}
+.subtitle h2 {
+	margin-left: 5px;
+}
+.subtitle h2:before {
+	content: counter(titleNumber) '. ';
+	counter-increment: titleNumber;
+}
+.subtitle a[href] {
+	position: absolute;
+	right: 5px;
+	bottom: 3px;
+	text-decoration: none;
+}
+
+.example_box {
+	position: relative;
+	margin: 10px 15px 15px 0;
+	padding: 5px;
+	border: 3px solid black;
+	border-radius: 15px;
+	background-color: #FFF;
+	box-shadow: 7px 6px 5px #555;
+}
+.example_box img {
+	width: 256px;
+	height: 192px;
+	margin: 5px;
+	border: 1px solid black;
+	border-radius: 7px;
+	float: left;
+}
+.example_box h1 {
+	margin: 0;
+}
+.example_box p {
+	margin: 5px;
+}
+.example_box .intro {
+	margin-left: 270px;
+}
+.example_box .import {
+	text-decoration: none;
+	color: black;
+}
+.example_box div.code {
+	padding: 3px 3px 3px 40px;
+	margin: 10px;
+	border: 3px outset;
+	border-radius: 15px;
+	background-image: url(../images/code_outer_bg.png);
+	background-position: 0 11px;
+	font-weight: bold;
+}
+.example_box div.code code {
+	display: block;
+	font-size: 18px;
+	line-height: 18px;
+	padding: 5px;
+	border: 3px inset;
+	border-radius: 0 10px 10px 0;
+	background-image: url(../images/code_bg.png);
+	background-position: 0 5px;
+	white-space: pre-wrap;
+	counter-reset: codeLine;
+}
+.example_box div.code code span:before {
+	content: counter(codeLine);
+	display: inline-block;
+	width: 30px;
+	margin: 0 15px 0 -45px;
+	text-align: right;
+	counter-increment: codeLine;
+}
+
+.block_info_box {
+	margin: 10px 15px 15px 0;
+	padding: 5px 10px;
+	border: 3px solid black;
+	border-radius: 15px;
+	background-color: #FFF;
+	box-shadow: 7px 6px 5px #555;
+}
+.block_info_box.close {
+	margin: -3px 15px 0px 0;
+}
+.block_info_box p {
+	margin: 0;
+	padding: 3px 5px;
+}

@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tutorial - Dynamic Art for iOS</title>
+    <link href="css/local.css" rel="stylesheet" type="text/css" />    <link href="css/blocks.css" rel="stylesheet" type="text/css" />
+    <script>
+		function code(id_number) {
+			if (document.getElementById(id_number+"_button_code").innerHTML=="Show Code") {
+				document.getElementById(id_number+"_button_code").innerHTML="Hide Code";
+				document.getElementById(id_number+"_code").className="code";
+			} else {
+				document.getElementById(id_number+"_button_code").innerHTML="Show Code";
+				document.getElementById(id_number+"_code").className="code hidden";
+			}
+		}
+	</script>
+  </head>
+  <body>
+  	<iframe id="download" name="download"></iframe>
+    <div id="container">
+      <div id="main">
+      			<div id="content">
+<h1>My First Program</h1>
+
+<div class="subtitle"><a href="#">Back to Top</a><a id="create"></a><h2>Create My First Board</h2></div><ol>
+  <li>
+    Start Dynamic ART by tapping the app icon on the iPad home screen. <br />
+    Dynamic ART supports both Portrait and Landscape mode of iPad. You can use it in any direction you like.
+  </li>
+  <li>
+    Click <strong>"Untitled"</strong> to open <strong>Board Manager</strong>. <br />
+    Board Manager is a place where you can switch among your boards.
+  </li>
+  <li>
+    Enter <strong>"My first board"</strong> or any name you like in the search/edit bar. <br />
+    This name will be used as the title of your first Dynamic board.
+  </li>
+  <li>
+    Click button <img class="icon" src="images/screenshot/add.png" /> to the right of the search/edit bar. This button is used to add a new Dynamic board to your board collections. <br />
+    Board Manager will be closed automatically, and now you can see the interface of your first Dynamic board.
+  </li>
+</ol>
+<div class="subtitle"><a href="#">Back to Top</a><a id="compose"></a><h2>Compose My First Program</h2></div><ol>
+  <li>
+    Click the top-left button <img class="icon" src="images/screenshot/add.png" /> to open the <strong>Tool Box</strong>. <br />
+    Tool Box will slip out from top. You can find all the blocks in Tool Box. Try to swicth among upper categories to browse all the blocks you have.
+  </li>
+  <li>
+    Switch to Category <strong>Control</strong>.
+  </li>
+  <li>
+    Drag a <strong>Startup</strong> block and drop it on your Dynamic board anywhere you like. <br />
+    <div class="block_info_box"><dfn class="block head"><span>Startup</span></dfn><p><strong>Type:</strong> Control</p><p> This is one of the <strong>Head Blocks</strong>. All Head Blocks are in green like this one. You can connect blocks below a Head Block to form a Block Sequence. The Head Block will determine when the Block Sequence should run. Other blocks  must be put in a Block Sequence , <strong>or it will never run</strong>.  <br />
+This block will run its Block Sequence as soon as <strong>the program starts running</strong>. </p>
+<p> <strong>Note:</strong> you can drug out many Head Blocks, they can run at the same time without disturbing each other. </p></div>    Tool Box will be disappeared temporarily as you are dragging the block. Then it will reappear after you drop the block. You can continue to pick the next block.
+  </li>
+  <li>
+    Drag a <strong>"Repeat"</strong> block, but do not drop it at once. <br />
+    <div class="block_info_box"><dfn class="block i1"><span>Repeat <var class="num"><span>number</span></var> times</span></dfn><p><strong>Type:</strong> Control</p><p> This "Repeat" block is one of the <strong>Loop blocks</strong>. You can plug other blocks into this block's inner socket to form a Sub-Block-Sequence. <br />
+When this block is running, it will run its Sub-Block-Sequence, run and run. It will let its Sub-Block-Sequence run for <var>number</var> times. Every time is called a "loop". </p></div>  </li>
+  <li>
+    Connect the <strong>"Repeat"</strong> block to "Startup" according to the following steps. <br />
+    First, drag the block near the bottom socket of "Startup", and you will see a white indicator showing the connecting of the two blocks. The connection will be made automatically as you drop the new block onto the indicated area.
+  </li>
+  <li>
+    Switch to Category <strong>Turtle</strong>. Drag a <strong>"Move forward"</strong> block, and connect it to the inner socket of "Repeat" block.
+    <div class="block_info_box"><dfn class="block normal"><span>Move forward <var class="num"><span>distance</span></var></span></dfn><p><strong>Type:</strong> Turtle</p><p> Move the turtle <var>distance</var> pixel(s) <strong>forward</strong>. The turtle will draw a trail on the way as it is moving. </p></div>  </li>
+  <li>
+    Drag a <strong>"Turn left"</strong> block, and connected it to the bottom socket of "Move forward" block.
+    <div class="block_info_box"><dfn class="block normal"><span>Turn left <var class="num"><span>angle</span></var></span></dfn><p><strong>Type:</strong> Turtle</p><p> Turn the turtle <var>angle</var> degree(s) <strong>left</strong>. </p></div>  </li>
+  <li>
+    Click the top-left button <img class="icon" src="images/screenshot/close.png" /> to close the Tool Box.
+  </li>
+  <li>
+    Click the argument in "Repeat" block. A keyboard will appear. Use key "<img class="icon" src="images/screenshot/backspace.png" />" to clear the content. Type in "4" in the text field. 
+  </li>
+  <li>
+    Your finished program should look like: <br />
+    <img class="screenshot" src="images/screenshot/first_program.png" />
+  </li>
+</ol>
+<div class="subtitle"><a href="#">Back to Top</a><a id="run"></a><h2>Run It!</h2></div><ol>
+  <li>
+    Click the top-right button <img class="icon" src="images/screenshot/run.png" />. You can see a turtle running according your commands to draw a rectangle.
+  </li>
+  <li>
+    The image drawn by the turtle should be like the following. <br />
+    <img class="screenshot" src="images/screenshot/first_run.png" /> <br />
+    If not, there might be something wrong in your program. Click the top-left button <img class="icon" src="images/screenshot/back.png" /> to return to your Dynamic board. Then you can check your program.
+  </li>
+</ol>
+<div class="subtitle"><a href="#">Back to Top</a><a id="variable"></a><h2>Use Variables</h2></div><ol>
+  <li>
+    Go back to your board.
+  </li>
+  <li>
+    Drag a <strong>"Set value"</strong> block out of Category <strong>Variable</strong>, and connect it between "Startup" and "Repeat".
+    <div class="block_info_box"><dfn class="block normal"><span>Set value of <var class="var"><span>variable</span></var> to <var class="num"><span>value</span></var></span></dfn><p><strong>Type:</strong> Variable</p><p> Set the value of the variable with name <var>variable</var> to <var>value</var>. </p></div>  </li>
+  <li>
+    Drag a <strong>"Divide"</strong> block out of Category <strong>Expression</strong>, and connect it onto the argument in "Turn left" block. <br />
+    <div class="block_info_box"><dfn class="exp num"><span><var class="num"><span>x</span></var> / <var class="num"><span>y</span></var></span></dfn><p><strong>Type:</strong> Expression</p><p> Calculate <strong><var>x</var> / <var>y</var></strong>. </p>
+<p> <strong>Warning:</strong> if <var>y</var> is zero, the result will be unexpected. </p></div>    The blocks without sockets like the "Divide" block are expressions. They can only be connected to arguments. You should follow the steps below: <br />
+    First, drag the block near the argument, and you will see a red indicator around the argument. The connection will be made automatically as you drop the new block onto the indicated area.
+  </li>
+  <li>
+    Change the first argument in "Set Value" block to <var>"edges"</var> or any name you like. 
+  </li>
+  <li>
+    Change the second argument in "Set Value" block to number <var>"8"</var>. 
+  </li>
+  <li>
+    Click the argument of "Repeat" block to edit it. <br />
+    Switch the argument type above the keyboard to <strong>"Variable"</strong>. Change the value to the name you choose for your variable. There are two ways to do it:
+    <ul>
+      <li>
+	Just use the keyboard to type in the name. Make sure that it is spelt right.
+      </li>
+      <li>
+	Scroll the pop-up list that appeared together with the keyboard. Find the name you want and click on it.
+      </li>
+    </ul>
+  </li>
+  <li>
+    Change the first argument in "Divide" block to number "360". 
+  </li>
+  <li>
+    Change the second argument in "Divide" block to your variable name. 
+  </li>
+  <li>
+    Your program with variable should look like: <br />
+    <img class="screenshot" src="images/screenshot/first_variable_program.png" />
+  </li>
+  <li>
+    Run your program again. <br />
+    <img class="screenshot" src="images/screenshot/first_variable_run.png" />
+  </li>
+  <li>
+    Change the value of "edges" to any positive integer you like. Enjoin the picture turtle drew on your iPad!
+  </li>
+</ol>
+
+	</div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,249 @@
+dfn {
+	display: inline-block;
+	margin: 5px 0;
+	background-repeat: repeat-x;
+	background-clip: content-box;
+	font-family: Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+dfn:before {
+	float: left;
+}
+dfn:after {
+	float: right;
+}
+dfn span {
+	display: inline-block;
+	position: relative;
+	height: 18px;
+	font-size: 18px;
+	line-height: 18px;
+	color: white;
+	text-shadow: 0 -1px black;
+}
+dfn.block {
+	padding: 0 5px 0 65px;
+	height: 50px;
+}
+dfn.block:before {
+	margin: 0 0 0 -65px;
+}
+dfn.block:after {
+	margin: 0 -5px 0 0;
+}
+dfn.block span {
+	padding: 0 13px;
+	top: 13px;
+	margin-left: -60px;
+}
+dfn.block.big {
+	background-image: url(../images/blocks/block_big.png);
+	height: 85px !important;
+}
+dfn.block.big:before {
+	content: url(../images/blocks/block_big_left.png);
+}
+dfn.block.big:after {
+	content: url(../images/blocks/block_big_right.png);
+	margin-top: -24px !important;
+}
+dfn.block.big>span:last-child {
+	top: 25px !important;
+}
+dfn.block.end {
+	background-image: url(../images/blocks/block_end.png);
+}
+dfn.block.end:before {
+	content: url(../images/blocks/block_end_left.png);
+}
+dfn.block.end:after {
+	content: url(../images/blocks/block_end_right.png);
+}
+dfn.block.head {
+	background-image: url(../images/blocks/block_head.png);
+}
+dfn.block.head:before {
+	content: url(../images/blocks/block_head_left.png);
+}
+dfn.block.head:after {
+	content: url(../images/blocks/block_head_right.png);
+}
+dfn.block.i1 {
+	background-image: url(../images/blocks/block_i1.png);
+	height:80px !important;
+}
+dfn.block.i1:before {
+	content: url(../images/blocks/block_i1_left.png);
+}
+dfn.block.i1:after {
+	content: url(../images/blocks/block_i1_right.png);
+}
+dfn.block.i2 {
+	background-image: url(../images/blocks/block_i2.png);
+	height:135px !important;
+}
+dfn.block.i2:before {
+	content: url(../images/blocks/block_i2_left.png);
+}
+dfn.block.i2:after {
+	content: url(../images/blocks/block_i2_right.png);
+	margin-top: -24px !important;
+}
+dfn.block.i2>span:last-child {
+	top: 45px !important;
+}
+dfn.block.normal {
+	background-image: url(../images/blocks/block_normal.png);
+}
+dfn.block.normal:before {
+	content: url(../images/blocks/block_normal_left.png);
+}
+dfn.block.normal:after {
+	content: url(../images/blocks/block_normal_right.png);
+}
+dfn.exp {
+	padding: 0 10px;
+	height: 44px;
+}
+dfn.exp:before {
+	margin: 0 0 0 -10px;
+}
+dfn.exp:after {
+	margin: 0 -10px 0 0;
+}
+dfn.exp span {
+	padding: 0 7px;
+	top: 10px;
+}
+dfn.exp.bool {
+	background-image: url(../images/blocks/exp_bool.png);
+}
+dfn.exp.bool:before {
+	content: url(../images/blocks/exp_bool_left.png);
+}
+dfn.exp.bool:after {
+	content: url(../images/blocks/exp_bool_right.png);	
+}
+dfn.exp.color {
+	background-image: url(../images/blocks/exp_color.png);
+}
+dfn.exp.color:before {
+	content: url(../images/blocks/exp_color_left.png);
+}
+dfn.exp.color:after {
+	content: url(../images/blocks/exp_color_right.png);	
+}
+dfn.exp.num {
+	background-image: url(../images/blocks/exp_num.png);
+}
+dfn.exp.num:before {
+	content: url(../images/blocks/exp_num_left.png);
+}
+dfn.exp.num:after {
+	content: url(../images/blocks/exp_num_right.png);	
+}
+dfn.exp.str {
+	background-image: url(../images/blocks/exp_str.png);
+}
+dfn.exp.str:before {
+	content: url(../images/blocks/exp_str_left.png);
+}
+dfn.exp.str:after {
+	content: url(../images/blocks/exp_str_right.png);	
+}
+dfn.exp.weak {
+	background-image: url(../images/blocks/exp_weak.png);
+	padding: 0 3px !important;
+}
+dfn.exp.weak:after {
+	content: url(../images/blocks/exp_weak_left.png);
+	margin: 0 0 0 -3px !important;	
+}
+dfn.exp.weak:after {
+	content: url(../images/blocks/exp_weak_right.png);
+	margin: 0 -3px 0 0 !important;
+}
+dfn var {
+	display: inline-block;
+	position: relative;
+	top: -4px;
+	background-repeat: repeat-x;
+	background-clip: content-box;
+	padding: 0 10px;
+	height: 26px;
+	text-indent: 0 !important;
+}
+dfn var:before {
+	float: left;
+	margin: 0 0 0 -10px;
+}
+dfn var:after {
+	float: right;
+	margin: 0 -10px 0 0;
+}
+dfn var span {
+	display: inline-block !important;
+	margin: 0px !important;
+	padding: 0 5px !important;
+	position: relative !important;
+	top: 4px !important;
+	height: 18px !important;
+	font-size: 18px !important;
+	line-height: 18px !important;
+	color: black !important;
+	font-style: normal !important;
+	text-indent: 0 !important;
+	text-shadow: none !important;
+}
+dfn var.bool {
+	background-image: url(../images/blocks/arg_bool.png);
+}
+dfn var.bool:before {
+	content: url(../images/blocks/arg_bool_left.png);
+}
+dfn var.bool:after {
+	content: url(../images/blocks/arg_bool_right.png);
+}
+dfn var.color {
+	background-image: url(../images/blocks/arg_color.png);
+}
+dfn var.color:before {
+	content: url(../images/blocks/arg_color_left.png);
+}
+dfn var.color:after {
+	content: url(../images/blocks/arg_color_right.png);
+}
+dfn var.num {
+	background-image: url(../images/blocks/arg_num.png);
+}
+dfn var.num:before {
+	content: url(../images/blocks/arg_num_left.png);
+}
+dfn var.num:after {
+	content: url(../images/blocks/arg_num_right.png);
+}
+dfn var.str {
+	background-image: url(../images/blocks/arg_str.png);
+}
+dfn var.str:before {
+	content: url(../images/blocks/arg_str_left.png);
+}
+dfn var.str:after {
+	content: url(../images/blocks/arg_str_right.png);
+}
+dfn var.var {
+	background-image: url(../images/blocks/arg_var.png);
+	padding: 0 3px !important;
+}
+dfn var.var:before {
+	content: url(../images/blocks/arg_var_left.png);
+	margin: 0 0 0 -3px !important;
+}
+dfn var.var:after {
+	content: url(../images/blocks/arg_var_right.png);
+	margin: 0 -3px 0 0 !important;
+}

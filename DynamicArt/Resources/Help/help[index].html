@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction - Dynamic Art for iOS</title>
+    <link href="css/local.css" rel="stylesheet" type="text/css" />    <link href="css/blocks.css" rel="stylesheet" type="text/css" />
+    <script>
+		function code(id_number) {
+			if (document.getElementById(id_number+"_button_code").innerHTML=="Show Code") {
+				document.getElementById(id_number+"_button_code").innerHTML="Hide Code";
+				document.getElementById(id_number+"_code").className="code";
+			} else {
+				document.getElementById(id_number+"_button_code").innerHTML="Show Code";
+				document.getElementById(id_number+"_code").className="code hidden";
+			}
+		}
+	</script>
+  </head>
+  <body>
+  	<iframe id="download" name="download"></iframe>
+    <div id="container">
+      <div id="main">
+      			<div id="content">
+<h1>Introduction</h1>
+
+<div class="subtitle"><a href="#">Back to Top</a><a id="introduction"></a><h2>Introduction</h2></div><p> <strong>Dynamic ART is a graphical programming environment on iPad.</strong> It's easy to create amazing artwork, animations, interactions and music with Dynamic ART. You can also share your creations with your friends. <br />
+You don't need to study complex syntax of computer languages. You just drag and drop a set of blocks and connect them together. It will be a fun way to build your own programs. <br />
+It can be used for beginners to learn and practice mathematical, computational ideas and creative thinking. </p>
+<p> If you have any questions or suggestions, please sent e-mails to <a href="mailto:support@dynamicart.uhostall.com">support@dynamicart.uhostall.com</a>. </p>
+<div class="subtitle"><a href="#">Back to Top</a><a id="features"></a><h2>Features</h2></div><ol>
+  <li>
+    <strong>Multi-programs</strong> management.
+  </li>
+  <li>
+    <strong>Graphical programming</strong> by dragging and dropping.
+  </li>
+  <li>
+    <strong>Program executing flow</strong> control and <strong>sub-block-sequence</strong> reuse.
+  </li>
+  <li>
+  <strong>Arithmetic operations</strong>, simple <strong>math functions</strong> (abs, sqrt, sin, cos, tan, asin, acos, atan, ln, log, round, floor, ceil, etc.).
+  </li>
+  <li>
+    <strong>List operations</strong>.
+  </li>
+  <li>
+    <strong>Turtle drawing</strong> similar to <em>Logo Language</em>.
+  </li>
+  <li>
+    <strong>2-D sketching</strong> (points, lines, rectangles, ellipses, polygens, arcs and Bezier curves).
+  </li>
+  <li>
+    <strong>RGBA</strong> and <strong>HSBA</strong> color palette.
+  </li>
+  <li>
+    Detect the beginning, movement and ending of <strong>user touch</strong>.
+  </li>
+  <li>
+    Play <strong>sound and music</strong>.
+  </li>
+  <li>
+    More detailed images on <strong>Retina iPad</strong> (<em>2048*1536</em>).
+  </li>
+</ol>
+<div class="subtitle"><a href="#">Back to Top</a><a id="example"></a><h2>Example</h2></div><p> You can try some examples first. Please click button "Open in Dynamic ART" to import the first example. </p>
+<div class="example_box"><img src="images/examples/11.png" /><div class="intro"><h1>Spinning</h1><p> What will happen if <strong>six turtles</strong> at the corners of a <strong>hexagon</strong> each moving towards the one to its left? This example will show you the result! </p>
+<p> <strong>Attractive Point:</strong> Amazing spire with <strong>gradient color</strong>. </p>
+<p> <strong>Note:</strong> This example is used for the Dynamic Art for iOS icon. </p><a class="import" href="examples/11.html" target="download"><button>Open in Dynamic ART</button></a><button id="11_button_code" onClick="code('11')">Show Code</button></div><div class="clear"></div><div id="11_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Turn off auto refresh </span>
+<span> Set value of  @points@  to  6 </span>
+<span> Set value of  @size@  to  300 </span>
+<span> Set value of  @dist@  to  5 </span>
+<span> Set value of  @h@  to  255 </span>
+<span> Pen up </span>
+<span> Repeat  $points$  times </span>
+<span>     Move forward  $size$ </span>
+<span>     Add  $current x$  to list  {x list} </span>
+<span>     Add  $current y$  to list  {y list} </span>
+<span>     Move backward  $size$ </span>
+<span>     Turn left  [ 360  /  $points$ ] </span>
+<span> End</span>
+<span> While  [ [ Distance from x  [ 0  th of list  {x list} ]  y  [ 0  th of list  {y list} ]  to x  [ 1  th of list  {x list} ]  y  [ 1  th of list  {y list} ] ]  &gt;  $dist$ ]  do </span>
+<span>     Set line color  [ Color of hue  $h$  saturation  255  brightness  255  Alpha  255 ] </span>
+<span>     Set value of  @h@  to  [ $h$  -  2 ] </span>
+<span>     Polygen by x  {x list}  y  {y list} </span>
+<span>     Loop  @index@  from  0  to  [ $points$  -  1 ]  step  1 </span>
+<span>         Pen up </span>
+<span>         Move to x  [ $index$  th of list  {x list} ]  y  [ $index$  th of list  {y list} ] </span>
+<span>         Heading to x  [ [ [ $index$  +  1 ]  mod  $points$ ]  th of list  {x list} ]  y  [ [ [ $index$  +  1 ]  mod  $points$ ]  th of list  {y list} ] </span>
+<span>         Pen down </span>
+<span>         Move forward  $dist$ </span>
+<span>         Replace  $index$  th of list  {x list}  with  $current x$ </span>
+<span>         Replace  $index$  th of list  {y list}  with  $current y$ </span>
+<span>     End</span>
+<span>     Refresh </span>
+<span> End</span></code></div></div><p> To view more examples, you can take a look at the <strong>
+Examples Page (button "Catalog" is used to switch among pages)</strong>. <br />
+You can also visit the <strong>
+Online Gallery (button in the right-top corner on the bar)</strong>. </p>
+
+	</div>
+      </div>
+    </div>
+  </body>
+</html>

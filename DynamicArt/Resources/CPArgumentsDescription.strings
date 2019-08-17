@@ -1,0 +1,213 @@
+/* 
+  CPArgumentsDescription.strings
+  DynamicArt
+
+  Created by wangyw on 4/5/12.
+  Copyright (c) 2012 codingpotato. All rights reserved.
+*/
+
+/*
+ * expression
+ */
+
+"CPAddArgumentsDescription" = "$0+$1";
+
+"CPAndArgumentsDescription" = "$0and$1";
+
+"CPCastArgumentsDescription" = "Convert$0to$1";
+
+"CPColorOfRGBAArgumentsDescription" = "Color of red$0green$1blue$2Alpha$3";
+
+"CPColorOfHSBAArgumentsDescription" = "Color of hue$0saturation$1brightness$2Alpha$3";
+
+"CPDayArgumentsDescription" = "Day";
+
+"CPDistanceArgumentsDescription" = "Distance from x$0y$1to x$2y$3";
+
+"CPDivideArgumentsDescription" = "$0/$1";
+
+"CPEqualArgumentsDescription" = "$0=$1";
+
+"CPGreatArgumentsDescription" = "$0>$1";
+
+"CPGreatAndEqualArgumentsDescription" = "$0>=$1";
+
+"CPHourArgumentsDescription" = "Hour";
+
+"CPJoinArgumentsDescription" = "Join$0and$1";
+
+"CPJoinListArgumentsDescription" = "Join list$0with delimiter$1";
+
+"CPLengthOfListArgumentsDescription" = "Length of list$0";
+
+"CPLessArgumentsDescription" = "$0<$1";
+
+"CPLessAndEqualArgumentsDescription" = "$0<=$1";
+
+"CPListEmptyArgumentsDescription" = "List$0is empty";
+
+"CPMathFunctionArgumentsDescription" = "$0($1)";
+
+"CPMinuteArgumentsDescription" = "Minute";
+
+"CPModArgumentsDescription" = "$0mod$1";
+
+"CPMonthArgumentsDescription" = "Month";
+
+"CPMultipleArgumentsDescription" = "$0X$1";
+
+"CPNotArgumentsDescription" = "Not$0";
+
+"CPNotEqualArgumentsDescription" = "Not$0=$1";
+
+"CPOrArgumentsDescription" = "$0or$1";
+
+"CPPointInRectArgumentsDescription" = "Is x$0y$1 in rect x$2y$3w$4h$5";
+
+"CPPowerArgumentsDescription" = "$0^$1";
+
+"CPRandomArgumentsDescription" = "Random of$0to$1";
+
+"CPRandomColorArgumentsDescription" = "Random color";
+
+"CPScreenColorArgumentsDescription" = "Color at x$0y$1";
+
+"CPSecondArgumentsDescription" = "Second";
+
+"CPSecondsSince1970ArgumentsDescription" = "Seconds since 1970";
+
+"CPSubArgumentsDescription" = "$0-$1";
+
+"CPValueOfListArgumentsDescription" = "$0th of list$1";
+
+"CPYearArgumentsDescription" = "Year";
+
+/*
+ * statement
+ */
+
+"CPAddToListArgumentsDescription" = "Add$0to list$1";
+
+"CPArcArgumentsDescription" = "Arc at center x$0y$1radius$2|      angle start$3end$4";
+
+"CPBeatsPerMinuteArgumentsDescription" = "Set$0beats per minute";
+
+"CPBreakArgumentsDescription" = "Break";
+
+"CPClearArgumentsDescription" = "Clear by color$0";
+
+"CPClearListArgumentsDescription" = "Clear list$0";
+
+"CPContinueArgumentsDescription" = "Continue";
+
+"CPCopyListArgumentsDescription" = "Copy list$0to list$1";
+
+"CPCurveArgumentsDescription" = "Curve from x$0y$1controlled by x$2y$3|               to x$4y$5controlled by x$6y$7";
+
+"CPEllipseArgumentsDescription" = "Ellipse at center x$0y$1radius h$2v$3";
+
+"CPGoHomeArgumentsDescription" = "Go home";
+
+"CPHeadingArgumentsDescription" = "Heading to x$0y$1";
+
+"CPHideArgumentsDescription" = "Hide";
+
+"CPIfArgumentsDescription" = "If$0";
+
+"CPIfElseArgumentsDescription" = "If$0|Else";
+
+"CPInsertAtListArgumentsDescription" = "Insert$0at$1th of list$2";
+
+"CPLineArgumentsDescription" = "Line from x$0y$1to x$2y$3";
+
+"CPLogArgumentsDescription" = "Log$0";
+
+"CPLogListArgumentsDescription" = "Log list$0";
+
+"CPLoopForeverArgumentsDescription" = "Loop forever";
+
+"CPLoopFromToStepArgumentsDescription" = "Loop$0from$1to$2step$3";
+
+"CPMoveBackwardArgumentsDescription" = "Move backward$0";
+
+"CPMoveForwardArgumentsDescription" = "Move forward$0";
+
+"CPMoveToArgumentsDescription" = "Move to x$0y$1";
+
+"CPMyStartupArgumentsDescription" = "Blockette$0";
+
+"CPPenUpArgumentsDescription" = "Pen up";
+
+"CPPenDownArgumentsDescription" = "Pen down";
+
+"CPPerformArgumentsDescription" = "Perform$0";
+
+"CPPlayMusicArgumentsDescription" = "Play music$0";
+
+"CPPlaySoundArgumentsDescription" = "Play sound $0HZ$1seconds";
+
+"CPPointArgumentsDescription" = "Point at x$0y$1";
+
+"CPPolygenArgumentsDescription" = "Polygen by x$0y$1";
+
+"CPRectArgumentsDescription" = "Rect at x$0y$1w$2h$3";
+
+"CPRefreshArgumentsDescription" = "Refresh";
+
+"CPRemoveFromListArgumentsDescription" = "Remove$0th of list$1";
+
+"CPRemoveLastItemOfListArgumentsDescription" = "Remove last item of list$0";
+
+"CPRepeatArgumentsDescription" = "Repeat$0times";
+
+"CPReplaceListWithArgumentsDescription" = "Replace$0th of list$1with$2";
+
+"CPReturnArgumentsDescription" = "Return";
+
+"CPSetDashPatternArgumentsDescription" = "Set dash pattern$0:$1";
+
+"CPSetFillColorArgumentsDescription" = "Set fill color$0";
+
+"CPSetFontArgumentsDescription" = "Set font$0";
+
+"CPSetFontSizeArgumentsDescription" = "Set font size$0";
+
+"CPSetLineColorArgumentsDescription" = "Set line color$0";
+
+"CPSetLineJoinArgumentsDescription" = "Set line join type$0";
+
+"CPSetLineWidthArgumentsDescription" = "Set line width$0";
+
+"CPSetVariableArgumentsDescription" = "Set value of$0to$1";
+
+"CPShowArgumentsDescription" = "Show";
+
+"CPSplitStringArgumentsDescription" = "Split$0to list$1with delimiter$2";
+
+"CPStartupArgumentsDescription" = "Startup";
+
+"CPTurnLeftArgumentsDescription" = "Turn left$0";
+
+"CPTurnOffAutoRefreshArgumentsDescription" = "Turn off auto refresh";
+
+"CPTurnOnAutoRefreshArgumentsDescription" = "Turn on auto refresh";
+
+"CPTurnRightArgumentsDescription" = "Turn right$0";
+
+"CPUntilArgumentsDescription" = "Repeat until$0";
+
+"CPWaitArgumentsDescription" = "Wait$0seconds";
+
+"CPWaitForTouchArgumentsDescription" = "Wait for touch";
+
+"CPWhenTouchBeginArgumentsDescription" = "When touch begin";
+
+"CPWhenTouchEndArgumentsDescription" = "When touch end";
+
+"CPWhenTouchMoveArgumentsDescription" = "When touch move";
+
+"CPWhileArgumentsDescription" = "While$0do";
+
+"CPWriteAtCenterArgumentsDescription" = "Write$0at center x$1y$2";
+
+"CPWriteAtOriginArgumentsDescription" = "Write$0at origin x$1y$2";

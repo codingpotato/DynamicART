@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tutorial - Dynamic Art for iOS</title>
+    <link href="css/local.css" rel="stylesheet" type="text/css" />    <link href="css/blocks.css" rel="stylesheet" type="text/css" />
+    <script>
+		function code(id_number) {
+			if (document.getElementById(id_number+"_button_code").innerHTML=="Show Code") {
+				document.getElementById(id_number+"_button_code").innerHTML="Hide Code";
+				document.getElementById(id_number+"_code").className="code";
+			} else {
+				document.getElementById(id_number+"_button_code").innerHTML="Show Code";
+				document.getElementById(id_number+"_code").className="code hidden";
+			}
+		}
+	</script>
+  </head>
+  <body>
+  	<iframe id="download" name="download"></iframe>
+    <div id="container">
+      <div id="main">
+      			<div id="content">
+<h1>Turtle Spire</h1>
+
+<div class="subtitle"><a href="#">Back to Top</a><a id="second"></a><h2>My Second Program</h2></div><ol>
+  <li>
+    Create a new Dynamic board named <strong>"My second board"</strong> or any name you like.
+  </li>
+  <li>
+    Drag a "Startup" block out of the Category "Control".
+  </li>
+  <li>
+    Drag a <strong>"Loop from to step"</strong> block out of the same category, and connect it to the bottom socket of "Startup" block.
+    <div class="block_info_box"><dfn class="block i1"><span>Loop <var class="var"><span>variable</span></var> from <var class="num"><span>begin</span></var> to <var class="num"><span>end</span></var> step <var class="num"><span>step</span></var></span></dfn><p><strong>Type:</strong> Control</p><p> This block is one of the <strong>Loop blocks</strong>. You can plug other blocks into this block's inner socket to form a Sub-Block-Sequence. <br />
+It will assign the numbers <var>begin</var>, <var>begin</var> + <var>step</var>, <var>begin</var> + 2*<var>step</var>... to <var>variable</var> one by one, but stop assigning when the number is greater than <var>end</var>. With each value of <var>variable</var>, it will run its Sub-Block-Sequence once (one "loop"). </p>
+<p> The <var>begin</var>, <var>end</var>, <var>step</var> can't be changed while this block is running. </p>
+<p> <strong>Warning:</strong> if <var>step</var> is zero , this block will act like a "Loop forever" block. </p></div>    Now please take a look at this block definition. You will notice a virtual block here in the definition. In all the arguments, there are black text we called Argument Name. When you are asked to edit a corresponding argument in your program, you will see text like "the argument named ..." in this tutorial. That is asking you to edit the argument at the same place of the argument with the quoted Argument Name in virtual block.
+  </li>
+  <li>
+    Drag a "Move forward" block out of the Category "Turtle", and connect it to the inner socket of "Loop from to step" block.
+  </li>
+  <li>
+    Drag a "Turn left" block out of the Category "Turtle", and connect it to the bottom socket of "Move forward" block.
+  </li>
+  <li>
+    Drag a <strong>"Log"</strong> block out of the Category "Interaction", and connect it to the bottom socket of "Turn left" block.
+    <div class="block_info_box"><dfn class="block normal"><span>Log <var class="str"><span>data</span></var></span></dfn><p><strong>Type:</strong> Interaction</p><p> Write <var>data</var> into the log book. <br />
+The format will be determined automatically according to the type of <var>data</var>. </p></div>  </li>
+  <li>
+    Change the first argument in "Loop from to step" block (the argument named <var>"variable"</var>) to "looper" or any name you like. 
+    Argument naming details can be found in the definition of a block. If you are confused, go back and check step 3.
+  </li>
+  <li>
+    Change the third argument (the argument named <var>"to"</var>) to <em>450</em>. <br />
+  </li>
+  <li>
+    Change the argument named <var>"step"</var> (which is the fourth argument) to <em>2</em>.
+  </li>
+  <li>
+    Change the argument named <var>"distance"</var> in "Move forward" block to the name you choose for your loop variable in step 7.
+  </li>
+  <li>
+    Change the argument named <var>"angle"</var> of "Turn left" block to <em>90.5</em>.
+  </li>
+  <li>
+    Change the argument named <var>"data"</var> of "Log" block to the loop variable.
+  </li>
+  <li>
+    Your finished program should be like: <br />
+    <img class="screenshot" src="images/screenshot/spire_program.png" />
+  </li>
+</ol>
+<div class="subtitle"><a href="#">Back to Top</a><a id="run"></a><h2>Run It!</h2></div><ol>
+  <li>
+    Run your program. The image drawn by the turtle should be like the following. <br />
+    <img class="screenshot" src="images/screenshot/spire_run.png" />
+  </li>
+  <li>
+    Click the bottom-right button <img class="icon" src="images/screenshot/log.png" /> and you will see the log book. You can observe the change of loop variable in the log book because you used a "Log" block to put it into the log book just now. <br />
+    <strong>Note:</strong> There are at most 100 lines of recent log displayed in the log book. When the limit is exceeded, the oldest logs lined will be removed automatically. This may make you miss some important information, so do not put too much log!
+  </li>
+</ol>
+<div class="subtitle"><a href="#">Back to Top</a><a id="photo"></a><h2>Thumbnail and Photo</h2></div>Click the up-right button  <img class="icon" src="images/screenshot/action.png" />. Then you can perform following actions by choosing in the menu:
+<ul>
+  <li>
+    <strong>Save Thumbnail:</strong> save central part of the image you draw as thumbnail of your program. The thumbnail will be later displayed in Board Manager.
+  </li>
+  <li>
+    <strong>Save Photo:</strong> save the image you draw into your photo library. <br />
+    The resolution of saved photo depends on the type of your iPad. If your iPad has a retina display. You can save photos with 2048x1536 or 1536x2048 resolution.
+  </li>
+  <li>
+    <strong>Send Email:</strong> send your program in an email. The program can be import into Dynamic ART from the email later. You can use this function to share your program with someone or just backup.
+  </li>
+</ul>
+<div class="subtitle"><a href="#">Back to Top</a><a id="color"></a><h2>Color and Width</h2></div><ol>
+  <li>
+    Go back to your board.
+  </li>
+  <li>
+    Drag a <strong>"Set line width"</strong> block out of the Category "Utility", and connect it between "Startup" and "Loop from to step" blocks.
+    <div class="block_info_box"><dfn class="block normal"><span>Set line width <var class="num"><span>width</span></var></span></dfn><p><strong>Type:</strong> Utility</p><p> Set how <strong>thick</strong> the lines and borders of shapes are on the stage. Use zero to draw shapes without borders. </p></div>  <li>
+    Drag a <strong>"Set line color"</strong> block out of the same category, and connect it between "Set line width" and "Loop from to step" blocks.
+    <div class="block_info_box"><dfn class="block normal"><span>Set line color <var class="color"><span>color</span></var></span></dfn><p><strong>Type:</strong> Utility</p><p> Set the default color used to draw lines and borders of shapes on the stage. </p></div>  </li>
+  <li>
+    Change the argument in "Set line width" block to <em>3</em>.    
+  </li>
+  <li>
+    Click the argument in "Set line color" block. You can see the color picking view appear in the keyboard area. The picking view is based on the HSBA Color System. Pick your favorite color in it by moving the cursor or clicking button "+" or "-".
+  </li>
+  <li>
+    This time, your program should be like: <br />
+    <img class="screenshot" src="images/screenshot/spire_color_program.png" />
+  </li>
+  <li>
+    Run your program again. You should see the rectangular spire with your favorite color.
+  </li>
+</ol>
+<div class="subtitle"><a href="#">Back to Top</a><a id="gradient"></a><h2>Gradient Color</h2></div><ol>
+  <li>
+    Go back to your board.
+  </li>
+  <li>
+    Drag "Log" block away from "Turn left" block, and you will see a trash bin appear in the bottom-right corner. Drag it onto the bin and drop it. The block will be removed from your Dynamic board.
+  </li>
+  <li>
+    Drag "Set line color" block away from "Startup" block, and all blocks below it will automatically follow. Drop it somewhere else on the board.
+  </li>
+  <li>
+    Drag "Loop from to step" block away from "Set line color" block, and connect it back to "Set line width" block.
+  </li>
+  <li>
+    Drag "Set line color" block, and connect it before "Move forward" blocks.
+  </li>
+  <li>
+    Drag a <strong>"Color of HSBA"</strong> block from Category "Utility", and connect it onto the argument in "Set line color" block. <br />
+    <div class="block_info_box"><dfn class="exp color"><span>Color of hue <var class="num"><span>h</span></var> saturation <var class="num"><span>s</span></var> brightness <var class="num"><span>b</span></var> alpha <var class="num"><span>a</span></var></span></dfn><p><strong>Type:</strong> Utility</p><p> Generate a color with <var>h</var>, <var>s</var>, <var>b</var>, <var>a</var> in <strong>HSBA color system</strong>. </p>
+<p> <strong>Note:</strong> All the four arguments' value should <strong>between 0 and 255</strong> (including 0 and 255). If any value is not in the range, it will be replaced by 0 (if it is less than 0) or 255 (if it is larger than 255) </p></div>  </li>
+  <li>
+    Change the two argument named "saturation" and "brightness" in "Color of HSBA" block both to 255.
+  </li>
+  <li>
+    Drag a "Divide" block from Category "Expression", and connect it onto the argument named "hue" in "Set line color" block.
+  </li>
+  <li>
+    Change the argument named "x" (which is the first argument) in "Divide" block to the loop variable. (If you forget what a loop variable is, chech step 7 in Section 1)
+  </li>
+  <li>
+    Change the argument named "y" (which is the second argument) in "Divide" block to <em>1.7647</em> (which is <em>450 / 255</em>).
+  </li>
+  <li>
+    This time, your program should be like: <br />
+    <img class="screenshot" src="images/screenshot/spire_grandient_color_program.png" />
+  </li>
+  <li>
+    Run your program again. You should see the rectangular spire with amazing grandient color. <br />
+    <img class="screenshot" src="images/screenshot/spire_grandient_color_run.png" />
+  </li>
+</ol>
+<div class="subtitle"><a href="#">Back to Top</a><a id="quiz"></a><h2>Quiz</h2></div>Could your modify the program to draw the following image? <br />
+<img class="screenshot" src="images/screenshot/spire_quiz_run.png" /> <br />
+If you have any problems, please refer to the example: <br />
+<div class="example_box"><img src="images/examples/5.png" /><div class="intro"><h1>Spire</h1><p> A basic and amazing way of using one turtle to form <strong>four spiral arms</strong> at the same time. With just several blocks, you can enjoy an attractive spire formed by only straight lines. </p>
+<p> <strong>Attractive Point:</strong> Particularly chosen colors which are picked randomly but do not look messy. </p><a class="import" href="examples/5.html" target="download"><button>Open in Dynamic ART</button></a><button id="5_button_code" onClick="code('5')">Show Code</button></div><div class="clear"></div><div id="5_code" class="code hidden"><code><span>---------- Startup ----------</span>
+<span> Hide </span>
+<span> Set line width  2 </span>
+<span> Set value of  @length@  to  0 </span>
+<span> While  [ $length$  &lt;=  450 ]  do </span>
+<span>     Set line color  [ Color of red  [ Random of  150  to  255 ]  green  [ Random of  150  to  255 ]  blue  [ Random of  150  to  255 ]  Alpha  255 ] </span>
+<span>     Set value of  @length@  to  [ $length$  +  2 ] </span>
+<span>     Move forward  $length$ </span>
+<span>     Turn left  90.5 </span>
+<span> End</span></code></div></div>
+	</div>
+      </div>
+    </div>
+  </body>
+</html>
