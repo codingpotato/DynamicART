@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 codingpotato. All rights reserved.
 //
 
-#include <libkern/OSAtomic.h>
+#include <stdatomic.h>
 
 #import "CPPerform.h"
 
@@ -29,7 +29,7 @@ typedef enum {
 
 @implementation CPPerform
 
-static int _recursionDepth = 0;
+static atomic_int _recursionDepth = 0;
 
 + (void)resetRecursionDepth {
     _recursionDepth = 0;
@@ -42,7 +42,7 @@ static int _recursionDepth = 0;
 }
 
 - (void)execute {
-    if (OSAtomicIncrement32(&_recursionDepth) > 500) {
+    if (atomic_fetch_add(&_recursionDepth, 1) > 500) {
         @throw [[CPReturnException alloc] initWithName:@"Return" reason:nil userInfo:nil];
     }
     
@@ -54,7 +54,7 @@ static int _recursionDepth = 0;
         }
     }
 
-    OSAtomicDecrement32(&_recursionDepth);
+    atomic_fetch_add(&_recursionDepth, -1);
 }
 
 @end

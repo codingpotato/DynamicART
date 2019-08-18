@@ -47,10 +47,6 @@
     CPTrace(@"%@ dealloc", self);
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-    return YES;
-}
-
 #pragma mark - private methods
 
 - (void)refresh {

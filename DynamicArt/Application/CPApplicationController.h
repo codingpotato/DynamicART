@@ -10,7 +10,7 @@
 
 extern NSString *CPApplicationControllerKeyPathBlockController;
 
-@interface CPApplicationController : NSObject <UIAlertViewDelegate>
+@interface CPApplicationController : NSObject
 
 @property (strong, nonatomic) CPBlockController *blockController;
 

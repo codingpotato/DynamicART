@@ -132,11 +132,7 @@
     }
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    self.turtleImageView.transform = CGAffineTransformIdentity;
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     self.turtleImageView.center = self.position;
     self.turtleImageView.transform = CGAffineTransformMakeRotation(self.angle * M_PI / 180.0);
     self.size = self.stage.bounds.size;

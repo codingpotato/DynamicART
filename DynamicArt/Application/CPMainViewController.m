@@ -253,7 +253,7 @@ typedef enum {
         if ([self respondsToSelector:@selector(popoverPresentationController)]) {
             activityViewController.popoverPresentationController.barButtonItem = sender;
         }
-        activityViewController.completionHandler = ^(NSString *act, BOOL done) {
+        activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
             self.state = CPMainViewControllerStateIdle;
         };
         [self presentViewController:activityViewController animated:YES completion:nil];

@@ -99,7 +99,7 @@ static NSString *_zhAppNameKey = @"zh_app_name";
                     } else if([key isEqualToString:_thumbnailKey]) {
                         self.thumbnailData = [self decodeBase64WithString:value];
                     } else if ([key isEqualToString:_zhAppNameKey]) {
-                        zhAppName = [value stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                        zhAppName = [value stringByRemovingPercentEncoding];
                     }
                 }
             }

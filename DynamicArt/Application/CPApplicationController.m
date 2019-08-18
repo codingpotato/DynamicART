@@ -232,8 +232,19 @@ static BOOL _observerAdded = NO;
     if (self.mailBodyParser.blockController) {
         if ([self hasApp:self.mailBodyParser.blockController.appName]) {
             NSString *message = [[NSString alloc] initWithFormat:@"Block board \"%@\" exists, override it?", self.mailBodyParser.blockController.appName];
-            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Import block board" message:message delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Override", nil];
-            [alertView show];
+            UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Import block board" message:message preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Override" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                [self loadAppFromParser];
+                self.isLoadingFromUrl = NO;
+                self.mailBodyParser = nil;
+            }]];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                if (!self.blockController) {
+                    [self loadCurrentApp];
+                }
+                self.isLoadingFromUrl = NO;
+                self.mailBodyParser = nil;
+            }]];
             
             // keep mailBodyParser object for using in alert view delegate method
             self.isLoadingFromUrl = YES;
@@ -242,18 +253,6 @@ static BOOL _observerAdded = NO;
             [self loadAppFromParser];
         }
     }
-    self.mailBodyParser = nil;
-}
-
-#pragma mark - UIAlertViewDelegate implement
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex != alertView.cancelButtonIndex) {
-        [self loadAppFromParser];
-    } else if (!self.blockController) {
-        [self loadCurrentApp];
-    }
-    self.isLoadingFromUrl = NO;
     self.mailBodyParser = nil;
 }
 
