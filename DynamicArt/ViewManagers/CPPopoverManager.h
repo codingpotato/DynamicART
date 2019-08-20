@@ -16,16 +16,16 @@
 
 @end
 
-@interface CPPopoverManager : NSObject <CPCacheItem, UIPopoverControllerDelegate>
+@interface CPPopoverManager : NSObject <CPCacheItem, UIPopoverPresentationControllerDelegate>
 
 + (CPPopoverManager *)defaultPopoverManager;
 
-- (void)presentAutoCompleteViewConrollerfromRect:(CGRect)frame inView:(UIView *)view delegate:(id<CPPopoverManagerDelegate>)delegate;
+- (void)presentAutoCompleteViewConrollerfromViewController:(UIViewController*)vc rect:(CGRect)rect inView:(UIView *)view delegate:(id<CPPopoverManagerDelegate>)delegate;
 
 - (void)reloadDataOfAutoCompleteViewController;
 
 - (void)dismissCurrentPopoverAnimated:(BOOL)animated;
 
-- (void)preparePopoverSegue:(UIStoryboardPopoverSegue *)popoverSegue delegate:(id<CPPopoverManagerDelegate>)delegate;
+- (void)preparePopoverSegue:(UIStoryboardSegue *)popoverSegue delegate:(id<CPPopoverManagerDelegate>)delegate;
 
 @end

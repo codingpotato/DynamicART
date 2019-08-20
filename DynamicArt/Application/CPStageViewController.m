@@ -126,7 +126,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"CPLogSegue"]) {
-        [[CPPopoverManager defaultPopoverManager] preparePopoverSegue:(UIStoryboardPopoverSegue *)segue delegate:self];
+        [[CPPopoverManager defaultPopoverManager] preparePopoverSegue:segue delegate:self];
         self.logViewController = segue.destinationViewController;
         self.logViewController.logString = self.logString;
     }

@@ -139,7 +139,7 @@ typedef enum {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"CPApplicationsSegue"]) {
-        [[CPPopoverManager defaultPopoverManager] preparePopoverSegue:(UIStoryboardPopoverSegue *)segue delegate:self];
+        [[CPPopoverManager defaultPopoverManager] preparePopoverSegue:segue delegate:self];
     } else if ([segue.identifier isEqualToString:@"CPStageSegue"]) {
         self.stageViewController = (CPStageViewController *)segue.destinationViewController;
         self.stageViewController.delegate = self;
@@ -566,7 +566,7 @@ typedef enum {
         }
         
         self.blockBoard.scrollEnabled = NO;
-        [[CPPopoverManager defaultPopoverManager] presentAutoCompleteViewConrollerfromRect:frame inView:self.view delegate:self];
+        [[CPPopoverManager defaultPopoverManager] presentAutoCompleteViewConrollerfromViewController:self rect:frame inView:self.view delegate:self];
     }
 }
 
