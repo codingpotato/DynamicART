@@ -14,8 +14,6 @@
 
 @interface CPPopoverManager ()
 
-@property (weak, nonatomic) id<CPPopoverManagerDelegate> delegate;
-
 @property (strong, nonatomic) CPAutoCompleteViewController *autoCompleteViewController;
 
 @end
@@ -31,16 +29,14 @@ static CPPopoverManager *_defaultPopoverManager;
     return _defaultPopoverManager;
 }
 
-- (void)presentAutoCompleteViewConrollerfromViewController:(UIViewController*)vc rect:(CGRect)rect inView:(UIView *)view delegate:(id<CPPopoverManagerDelegate>)delegate {
+- (void)presentAutoCompleteViewConrollerfromViewController:(UIViewController*)vc rect:(CGRect)rect inView:(UIView *)view {
     [self dismissCurrentPopoverAnimated:YES];
     
-    self.delegate = delegate;
     self.autoCompleteViewController = [[CPAutoCompleteViewController alloc] init];
     self.autoCompleteViewController.modalPresentationStyle = UIModalPresentationPopover;
     UIPopoverPresentationController* popoverController = self.autoCompleteViewController.popoverPresentationController;
     popoverController.sourceView = view;
     popoverController.sourceRect = rect;
-    popoverController.delegate = self;
     popoverController.permittedArrowDirections = UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown | UIPopoverArrowDirectionRight;
     [vc presentViewController:self.autoCompleteViewController animated:YES completion:nil];
 }
@@ -56,32 +52,12 @@ static CPPopoverManager *_defaultPopoverManager;
         self.autoCompleteViewController = nil;
         [[CPInputFieldManager defaultInputFieldManager] autoCompleteViewDismissed];
     }
-    [self.delegate popoverDismissedFromPopoverManager];
-    self.delegate = nil;
-}
-
-- (void)preparePopoverSegue:(UIStoryboardSegue *)popoverSegue delegate:(id<CPPopoverManagerDelegate>)delegate {
-    [self dismissCurrentPopoverAnimated:YES];
-    self.delegate = delegate;
 }
 
 #pragma mark - CPCacheItem implement
 
 + (void)releaseCache {
-    /*if (!_defaultPopoverManager.popoverController) {
-        _defaultPopoverManager = nil;
-    }*/
-}
-
-#pragma mark - UIPopoverControllerDelegate
-
-- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
-    if (self.autoCompleteViewController) {
-        [[CPInputFieldManager defaultInputFieldManager] autoCompleteViewDismissed];
-        self.autoCompleteViewController = nil;
-    }
-    [self.delegate popoverDismissedFromPopoverManager];
-    self.delegate = nil;
+    _defaultPopoverManager = nil;
 }
 
 @end

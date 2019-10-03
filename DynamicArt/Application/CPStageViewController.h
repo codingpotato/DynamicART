@@ -20,7 +20,7 @@
 
 @end
 
-@interface CPStageViewController : CPFullScreenViewController <CPDrawContext, CPPopoverManagerDelegate, CPStageViewDelegate, CPSynthesizerDelegate, MFMailComposeViewControllerDelegate, UIActionSheetDelegate>
+@interface CPStageViewController : CPFullScreenViewController <CPDrawContext, CPStageViewDelegate, CPSynthesizerDelegate, MFMailComposeViewControllerDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) id<CPStageViewControllerDelegate> delegate;
 

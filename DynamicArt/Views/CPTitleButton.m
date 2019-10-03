@@ -12,23 +12,23 @@
 
 @interface CPTitleButton ()
 
-@property (nonatomic) BOOL isArrayUp;
+@property (nonatomic) BOOL isArrowUp;
 
 @end
 
 @implementation CPTitleButton
 
-- (void)arrawUp {
-    if (!self.isArrayUp) {
+- (void)arrowUp {
+    if (!self.isArrowUp) {
         [self setImage:[UIImage imageNamed:@"title_up.png"] forState:UIControlStateNormal];
-        self.isArrayUp = YES;
+        self.isArrowUp = YES;
     }
 }
 
-- (void)arrawDown {
-    if (self.isArrayUp) {
+- (void)arrowDown {
+    if (self.isArrowUp) {
         [self setImage:[UIImage imageNamed:@"title_down.png"] forState:UIControlStateNormal];
-        self.isArrayUp = NO;
+        self.isArrowUp = NO;
     }
 }
 

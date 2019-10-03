@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 codingpotato. All rights reserved.
 //
 
+#import "CPApplicationsViewController.h"
 #import "CPBlockViewDelegate.h"
 #import "CPFullScreenViewController.h"
 #import "CPHelpViewController.h"
@@ -17,7 +18,7 @@
 
 @class CPBlockBoard;
 
-@interface CPMainViewController : CPFullScreenViewController < CPBlockViewDelegate, CPHelpViewControllerDelegate, CPInputFieldManagerDelegate, CPPopoverManagerDelegate, CPStageViewControllerDelegate, CPStartupHelpManagerDelegate, CPToolBoxManagerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate>
+@interface CPMainViewController : CPFullScreenViewController <CPApplicationsViewControllerDelegate, CPBlockViewDelegate, CPHelpViewControllerDelegate, CPInputFieldManagerDelegate, CPStageViewControllerDelegate, CPStartupHelpManagerDelegate, CPToolBoxManagerDelegate, MFMailComposeViewControllerDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *toolBoxBarButtonItem;
 

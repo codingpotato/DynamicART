@@ -8,8 +8,8 @@
 
 @interface CPTitleButton : UIButton
 
-- (void)arrawUp;
+- (void)arrowUp;
 
-- (void)arrawDown;
+- (void)arrowDown;
 
 @end

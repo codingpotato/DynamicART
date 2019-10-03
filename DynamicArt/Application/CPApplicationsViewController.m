@@ -64,6 +64,11 @@ static const NSUInteger numberOfApplicationsInOneCell = 4;
     }
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.delegate applicationsViewControllerDismissed:self];
+}
+
 - (IBAction)addApplication:(id)sender {
     NSString *appName = self.searchBar.text;
     if (appName && ![appName isEqualToString:@""]) {
@@ -80,7 +85,7 @@ static const NSUInteger numberOfApplicationsInOneCell = 4;
             [self presentViewController:actionSheet animated:YES completion:nil];
         } else {
             [applicationController createNewApp:appName];
-            [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:YES];
+            [self.presentingViewController dismissViewControllerAnimated:self completion:nil];
         }
     }
 }
@@ -101,7 +106,7 @@ static const NSUInteger numberOfApplicationsInOneCell = 4;
             [self presentViewController:actionSheet animated:YES completion:nil];
         } else {
             [applicationController duplicateCurrentAppTo:appName];
-            [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:YES];
+            [self.presentingViewController dismissViewControllerAnimated:self completion:nil];
         }
     }
 }

@@ -8,24 +8,14 @@
 
 #import "CPCacheManager.h"
 
-@class CPPopoverManager;
-
-@protocol CPPopoverManagerDelegate <NSObject>
-
-- (void)popoverDismissedFromPopoverManager;
-
-@end
-
-@interface CPPopoverManager : NSObject <CPCacheItem, UIPopoverPresentationControllerDelegate>
+@interface CPPopoverManager : NSObject <CPCacheItem>
 
 + (CPPopoverManager *)defaultPopoverManager;
 
-- (void)presentAutoCompleteViewConrollerfromViewController:(UIViewController*)vc rect:(CGRect)rect inView:(UIView *)view delegate:(id<CPPopoverManagerDelegate>)delegate;
+- (void)presentAutoCompleteViewConrollerfromViewController:(UIViewController*)vc rect:(CGRect)rect inView:(UIView *)view;
 
 - (void)reloadDataOfAutoCompleteViewController;
 
 - (void)dismissCurrentPopoverAnimated:(BOOL)animated;
-
-- (void)preparePopoverSegue:(UIStoryboardSegue *)popoverSegue delegate:(id<CPPopoverManagerDelegate>)delegate;
 
 @end

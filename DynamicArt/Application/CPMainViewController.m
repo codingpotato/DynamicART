@@ -29,18 +29,6 @@
 #import "CPStatement.h"
 #import "CPVariableManager.h"
 
-typedef enum {
-    CPMainViewControllerStateIdle,
-    CPMainViewControllerStateApplications,
-    CPMainViewControllerStateAutoComplete,
-    CPMainViewControllerStateToolBox,
-    CPMainViewControllerStateStage,
-    CPMainViewControllerStateHelp,
-    CPMainViewControllerStateAirDrop,
-    CPMainViewControllerStateMail,
-    CPMainViewControllerStateDragBlocks
-} CPMainViewControllerState;
-
 @interface CPMainViewController ()
 
 @property (strong, nonatomic) CPStartupHelpManager *startupHelpManager;
@@ -50,8 +38,6 @@ typedef enum {
 @property (weak, nonatomic) CPStageViewController *stageViewController;
 
 @property (strong, nonatomic) CPTrashManager *trashManager;
-
-@property (nonatomic) CPMainViewControllerState state;
 
 @property (nonatomic) CGFloat scrollUpHeight;
 
@@ -109,8 +95,6 @@ typedef enum {
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
-
-        self.state = CPMainViewControllerStateIdle;
     }
     return self;
 }
@@ -139,7 +123,9 @@ typedef enum {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"CPApplicationsSegue"]) {
-        [[CPPopoverManager defaultPopoverManager] preparePopoverSegue:segue delegate:self];
+        UINavigationController *navigationController = (UINavigationController *)segue.destinationViewController;
+        CPApplicationsViewController *applicationsViewController = (CPApplicationsViewController *)navigationController.topViewController;
+        applicationsViewController.delegate = self;
     } else if ([segue.identifier isEqualToString:@"CPStageSegue"]) {
         self.stageViewController = (CPStageViewController *)segue.destinationViewController;
         self.stageViewController.delegate = self;
@@ -160,11 +146,7 @@ typedef enum {
         }
         if (![newBlockController isMemberOfClass:[NSNull class]]) {
             [self createViewsForBlockController:newBlockController];
-            
-            if (self.state == CPMainViewControllerStateHelp) {
-                [self backFromHelpViewController:nil];
-            }
-        } else if (self.state == CPMainViewControllerStateIdle) {
+        } else {
             [self showStartupHelp];
         }
     } else if (keyPath == CPBlockControllerKeyPathAppName) {
@@ -183,101 +165,57 @@ typedef enum {
 }
 
 - (IBAction)toolBoxBarButtonPressed:(id)sender {
-    if (self.state == CPMainViewControllerStateIdle) {
-        self.state = CPMainViewControllerStateToolBox;
-        self.navigationController.navigationBar.alpha = 0.0;
-        self.navigationController.toolbar.alpha = 0.0;
-        self.toolBoxManager = [[CPToolBoxManager alloc] initWithFrame:self.view.bounds delegate:self];
-        [self.view insertSubview:self.toolBoxManager.view aboveSubview:self.topToolbar];
-    } else {
-        // callback of CPPopoverManager will set state to CPMainViewControllerStateIdle
-        [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:YES];
-    }
+    self.navigationController.navigationBar.alpha = 0.0;
+    self.navigationController.toolbar.alpha = 0.0;
+    self.toolBoxManager = [[CPToolBoxManager alloc] initWithFrame:self.view.bounds delegate:self];
+    [self.view insertSubview:self.toolBoxManager.view aboveSubview:self.topToolbar];
 }
 
 - (IBAction)titleButtonPressed:(id)sender {
-    if (self.state == CPMainViewControllerStateIdle) {
-        self.state = CPMainViewControllerStateApplications;
-        [self performSegueWithIdentifier:@"CPApplicationsSegue" sender:self];
-        [self.titleButton arrawUp];
-        
-        if (![CPApplicationController defaultController].blockController) {
-            [self hideStartupHelp];
-        }
-    } else {
-        // callback of CPPopoverManager will set state to CPMainViewControllerStateIdle, and arrayDown
-        [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:YES];
+    [self performSegueWithIdentifier:@"CPApplicationsSegue" sender:self];
+    [self.titleButton arrowUp];
+    
+    if (![CPApplicationController defaultController].blockController) {
+        [self hideStartupHelp];
     }
 }
 
 - (IBAction)runBarButtonPressed:(id)sender {
-    if (self.state == CPMainViewControllerStateIdle) {
-        self.state = CPMainViewControllerStateStage;
-        [self performSegueWithIdentifier:@"CPStageSegue" sender:self];
-    } else {
-        // callback of CPPopoverManager will set state to CPMainViewControllerStateIdle
-        [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:YES];
-    }
+    [self performSegueWithIdentifier:@"CPStageSegue" sender:self];
 }
 
 - (IBAction)helpBarButtonPressed:(id)sender {
-    if (self.state == CPMainViewControllerStateIdle) {
-        self.state = CPMainViewControllerStateHelp;
-        [self performSegueWithIdentifier:@"CPHelpSegue" sender:self];
-    } else {
-        // callback of CPPopoverManager will set state to CPMainViewControllerStateIdle
-        [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:YES];
-    }
+    [self performSegueWithIdentifier:@"CPHelpSegue" sender:self];
 }
 
 - (IBAction)alignBarButtonPressed:(id)sender {
-    if (self.state == CPMainViewControllerStateIdle) {
-        [[CPApplicationController defaultController].blockController alignBlocks];
-        self.blockBoard.contentOffset = CGPointZero;
-    } else {
-        // callback of CPPopoverManager will set state to CPMainViewControllerStateIdle
-        [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:YES];
-    }
+    [[CPApplicationController defaultController].blockController alignBlocks];
+    self.blockBoard.contentOffset = CGPointZero;
 }
 
 - (IBAction)airDropBarButtonPressed:(id)sender {
-    if (self.state == CPMainViewControllerStateIdle) {
-        self.state = CPMainViewControllerStateAirDrop;
-        CPApplicationController *applicationController = [CPApplicationController defaultController];
-        CPMailBodyParser *parser = [[CPMailBodyParser alloc] initWithBlockController:applicationController.blockController thumbnailImage:applicationController.thumbnailOfCurrrentApp];
-        
-        NSURL *url = [[NSURL alloc] initWithString:parser.urlString];
-        [UIPasteboard generalPasteboard].string = parser.urlString;
-        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:nil];
-        activityViewController.excludedActivityTypes = @[UIActivityTypeAddToReadingList, UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard,UIActivityTypeMail, UIActivityTypeMessage, UIActivityTypePostToFacebook, UIActivityTypePostToFlickr, UIActivityTypePostToTencentWeibo, UIActivityTypePostToTwitter, UIActivityTypePostToVimeo, UIActivityTypePostToWeibo, UIActivityTypePrint, UIActivityTypeSaveToCameraRoll];
-        if ([self respondsToSelector:@selector(popoverPresentationController)]) {
-            activityViewController.popoverPresentationController.barButtonItem = sender;
-        }
-        activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
-            self.state = CPMainViewControllerStateIdle;
-        };
-        [self presentViewController:activityViewController animated:YES completion:nil];
-    } else {
-        // callback of CPPopoverManager will set state to CPMainViewControllerStateIdle
-        [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:YES];
+    CPApplicationController *applicationController = [CPApplicationController defaultController];
+    CPMailBodyParser *parser = [[CPMailBodyParser alloc] initWithBlockController:applicationController.blockController thumbnailImage:applicationController.thumbnailOfCurrrentApp];
+    
+    NSURL *url = [[NSURL alloc] initWithString:parser.urlString];
+    [UIPasteboard generalPasteboard].string = parser.urlString;
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:nil];
+    activityViewController.excludedActivityTypes = @[UIActivityTypeAddToReadingList, UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard,UIActivityTypeMail, UIActivityTypeMessage, UIActivityTypePostToFacebook, UIActivityTypePostToFlickr, UIActivityTypePostToTencentWeibo, UIActivityTypePostToTwitter, UIActivityTypePostToVimeo, UIActivityTypePostToWeibo, UIActivityTypePrint, UIActivityTypeSaveToCameraRoll];
+    if ([self respondsToSelector:@selector(popoverPresentationController)]) {
+        activityViewController.popoverPresentationController.barButtonItem = sender;
     }
+    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 - (IBAction)mailBarButtonPressed:(id)sender {
-    if (self.state == CPMainViewControllerStateIdle) {
-        self.state = CPMainViewControllerStateMail;
-        CPApplicationController *applicationController = [CPApplicationController defaultController];
-        CPMailBodyParser *parser = [[CPMailBodyParser alloc] initWithBlockController:applicationController.blockController thumbnailImage:applicationController.thumbnailOfCurrrentApp];
-        
-        MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
-        mailComposeViewController.mailComposeDelegate = self;
-        mailComposeViewController.subject = applicationController.blockController.appName;
-        [mailComposeViewController setMessageBody:parser.mailBody isHTML:YES];
-        [self presentViewController:mailComposeViewController animated:YES completion:nil];
-    } else {
-        // callback of CPPopoverManager will set state to CPMainViewControllerStateIdle
-        [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:YES];
-    }
+    CPApplicationController *applicationController = [CPApplicationController defaultController];
+    CPMailBodyParser *parser = [[CPMailBodyParser alloc] initWithBlockController:applicationController.blockController thumbnailImage:applicationController.thumbnailOfCurrrentApp];
+    
+    MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
+    mailComposeViewController.mailComposeDelegate = self;
+    mailComposeViewController.subject = applicationController.blockController.appName;
+    [mailComposeViewController setMessageBody:parser.mailBody isHTML:YES];
+    [self presentViewController:mailComposeViewController animated:YES completion:nil];
 }
 
 #pragma mark - private lifecycle methods
@@ -292,24 +230,7 @@ typedef enum {
 }
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification {
-    switch (self.state) {
-        case CPMainViewControllerStateStage:
-        case CPMainViewControllerStateHelp:
-        case CPMainViewControllerStateMail:
-            self.state = CPMainViewControllerStateIdle;
-            [self dismissViewControllerAnimated:NO completion:nil];
-            break;
-        case CPMainViewControllerStateApplications:
-        case CPMainViewControllerStateAutoComplete:
-            // callback of CPPopoverManager will set state to CPMainViewControllerStateIdle
-            [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:NO];
-            break;
-        case CPMainViewControllerStateToolBox:
-            // dismissToolBoxManager method will set state to CPMainViewControllerStateIdle
-            [self dismissToolBoxManager:nil];
-        default:
-            break;
-    }
+    [self dismissToolBoxManager:nil];
 
     [self unloadBlockViews];
     
@@ -461,72 +382,67 @@ typedef enum {
     }
 }
 
+#pragma mark - CPApplicationsViewControllerDelegate
+
+- (void)applicationsViewControllerDismissed:(CPApplicationsViewController *)vc {
+    [self.titleButton arrowDown];
+}
+
 #pragma mark - CPBlockViewDelegate implement
 
 - (void)pickUpFromBlockView:(CPBlockView *)blockView {
-    if (self.state == CPMainViewControllerStateIdle || self.state == CPMainViewControllerStateToolBox) {
-        self.state = CPMainViewControllerStateDragBlocks;
-        
-        UIGraphicsEndImageContext();
-        UIGraphicsBeginImageContextWithOptions(blockView.bounds.size, NO, blockView.scale);
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        [blockView.layer renderInContext:context];
-        UIImage *blockImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        CGRect frame = [self.blockBoard convertRect:blockView.frame toView:self.view];        
-        self.ghostImageView = [[UIImageView alloc] initWithImage:blockImage];
-        self.ghostImageView.frame = frame;
-        self.ghostImageView.layer.shadowColor = [[UIColor blackColor] CGColor];
-        self.ghostImageView.layer.shadowOffset = CGSizeMake(0.0, 5.0);
-        self.ghostImageView.layer.shadowOpacity = 0.8;
-        [self.view addSubview:self.ghostImageView];
-        
-        self.draggedBlockView = blockView;
-        self.draggedBlockView.hidden = YES;
-        [[CPApplicationController defaultController].blockController pickUpBlocksFrom:blockView.block];
+    UIGraphicsEndImageContext();
+    UIGraphicsBeginImageContextWithOptions(blockView.bounds.size, NO, blockView.scale);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [blockView.layer renderInContext:context];
+    UIImage *blockImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    CGRect frame = [self.blockBoard convertRect:blockView.frame toView:self.view];
+    self.ghostImageView = [[UIImageView alloc] initWithImage:blockImage];
+    self.ghostImageView.frame = frame;
+    self.ghostImageView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.ghostImageView.layer.shadowOffset = CGSizeMake(0.0, 5.0);
+    self.ghostImageView.layer.shadowOpacity = 0.8;
+    [self.view addSubview:self.ghostImageView];
+    
+    self.draggedBlockView = blockView;
+    self.draggedBlockView.hidden = YES;
+    [[CPApplicationController defaultController].blockController pickUpBlocksFrom:blockView.block];
 
-        [self.trashManager pickedUpFromBlockView:blockView];
-    }
+    [self.trashManager pickedUpFromBlockView:blockView];
 }
 
 - (void)moveFromBlockView:(CPBlockView *)blockView location:(CGPoint)location byTranslation:(CGPoint)translation {
-    if (self.state == CPMainViewControllerStateDragBlocks) {
-        self.ghostImageView.frame = CGRectOffset(self.ghostImageView.frame, translation.x, translation.y);
-        CPBlockController *blockController = [CPApplicationController defaultController].blockController;
-        [blockController moveBlocksFrom:blockView.block byTranslation:translation];
-        
-        [self.trashManager blockViewMoveIntoTrash:blockView location:location byTranslation:translation];
-        if (self.trashManager.isInRemoveState) {
-            [blockController disconnectCurrentPlugAndSocket];
-            [blockController disconnectCurrentArgumentAndExpression];
-        }
+    self.ghostImageView.frame = CGRectOffset(self.ghostImageView.frame, translation.x, translation.y);
+    CPBlockController *blockController = [CPApplicationController defaultController].blockController;
+    [blockController moveBlocksFrom:blockView.block byTranslation:translation];
+    
+    [self.trashManager blockViewMoveIntoTrash:blockView location:location byTranslation:translation];
+    if (self.trashManager.isInRemoveState) {
+        [blockController disconnectCurrentPlugAndSocket];
+        [blockController disconnectCurrentArgumentAndExpression];
     }
 }
 
 - (void)putDownFromBlockView:(CPBlockView *)blockView {
-    if (self.state == CPMainViewControllerStateDragBlocks) {
-        // put down method of tool box will modify the stat to CPMainViewControllerStateToolBox then
-        self.state = CPMainViewControllerStateIdle;
-        
-        for (CPBlockView *blockView in self.ghostImageView.subviews) {
-            [blockView removeFromSuperview];
-            [self.blockBoard addSubview:blockView];
-        }
-        self.draggedBlockView.hidden = NO;
-        self.draggedBlockView = nil;
-        
-        [self.ghostImageView removeFromSuperview];
-        self.ghostImageView = nil;
-        
-        if (self.trashManager.isInRemoveState) {
-            [[CPApplicationController defaultController].blockController removeBlocksFrom:blockView.block];
-        } else {
-            [[CPApplicationController defaultController].blockController putDownBlocksFrom:blockView.block];
-        }
-        
-        [self.trashManager putDownFromBlockView:blockView];
+    for (CPBlockView *blockView in self.ghostImageView.subviews) {
+        [blockView removeFromSuperview];
+        [self.blockBoard addSubview:blockView];
     }
+    self.draggedBlockView.hidden = NO;
+    self.draggedBlockView = nil;
+    
+    [self.ghostImageView removeFromSuperview];
+    self.ghostImageView = nil;
+    
+    if (self.trashManager.isInRemoveState) {
+        [[CPApplicationController defaultController].blockController removeBlocksFrom:blockView.block];
+    } else {
+        [[CPApplicationController defaultController].blockController putDownBlocksFrom:blockView.block];
+    }
+    
+    [self.trashManager putDownFromBlockView:blockView];
 }
 
 - (void)ghostBlockView:(CPBlockView *)blockView {
@@ -544,7 +460,6 @@ typedef enum {
 
 - (void)backFromHelpViewController:(CPHelpViewController *)helpViewController {
     [self dismissViewControllerAnimated:YES completion:nil];
-    self.state = CPMainViewControllerStateIdle;
 }
 
 #pragma mark - CPInputFieldManagerDelegate
@@ -552,46 +467,29 @@ typedef enum {
 - (void)inputFieldManager:(CPInputFieldManager *)inputFieldManager didShowInputField:(CPInputField *)inputField {
     NSAssert(inputField, @"");
     
-    if (self.state == CPMainViewControllerStateIdle) {
-        self.state = CPMainViewControllerStateAutoComplete;
-        
-        CGRect frame = [inputField.view convertRect:inputField.view.bounds toView:self.view];
-        CGFloat keyboardHeight = self.view.bounds.size.height > self.view.bounds.size.width ? 500.0 : 600.0;
-        if (frame.origin.y + frame.size.height > self.view.bounds.size.height - keyboardHeight) {
-            self.scrollUpHeight = keyboardHeight - (self.view.bounds.size.height - frame.origin.y - frame.size.height);
-            [self.blockBoard setContentOffset:CPPointTranslateByY(self.blockBoard.contentOffset, self.scrollUpHeight) animated:NO];
-            frame.origin.y -= self.scrollUpHeight;
-        } else {
-            self.scrollUpHeight = 0.0;
-        }
-        
-        self.blockBoard.scrollEnabled = NO;
-        [[CPPopoverManager defaultPopoverManager] presentAutoCompleteViewConrollerfromViewController:self rect:frame inView:self.view delegate:self];
+    CGRect frame = [inputField.view convertRect:inputField.view.bounds toView:self.view];
+    CGFloat keyboardHeight = self.view.bounds.size.height > self.view.bounds.size.width ? 500.0 : 600.0;
+    if (frame.origin.y + frame.size.height > self.view.bounds.size.height - keyboardHeight) {
+        self.scrollUpHeight = keyboardHeight - (self.view.bounds.size.height - frame.origin.y - frame.size.height);
+        [self.blockBoard setContentOffset:CPPointTranslateByY(self.blockBoard.contentOffset, self.scrollUpHeight) animated:NO];
+        frame.origin.y -= self.scrollUpHeight;
+    } else {
+        self.scrollUpHeight = 0.0;
     }
+
+    self.blockBoard.scrollEnabled = NO;
+    [[CPPopoverManager defaultPopoverManager] presentAutoCompleteViewConrollerfromViewController:self rect:frame inView:self.view];
 }
 
 - (void)inputFieldManager:(CPInputFieldManager *)inputFieldManager willHideInputField:(CPInputField *)inputField {
-    if (self.state == CPMainViewControllerStateAutoComplete) {
-        self.blockBoard.scrollEnabled = YES;
+    self.blockBoard.scrollEnabled = YES;
         
-        if (self.scrollUpHeight > 0.0) {
-            [self.blockBoard setContentOffset:CPPointTranslateByY(self.blockBoard.contentOffset, -self.scrollUpHeight) animated:NO];
-            self.scrollUpHeight = 0.0;
-        }
-        // callback of CPPopoverManager will set state to CPMainViewControllerStateIdle
-        [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:YES];
+    if (self.scrollUpHeight > 0.0) {
+        [self.blockBoard setContentOffset:CPPointTranslateByY(self.blockBoard.contentOffset, -self.scrollUpHeight) animated:NO];
+        self.scrollUpHeight = 0.0;
     }
-}
-
-#pragma mark - CPPopoverManagerDelegate delegate
-
-- (void)popoverDismissedFromPopoverManager {
-    [self.titleButton arrawDown];
-    self.state = CPMainViewControllerStateIdle;
-    
-    if (![CPApplicationController defaultController].blockController) {
-        [self showStartupHelp];
-    }
+    // callback of CPPopoverManager will set state to CPMainViewControllerStateIdle
+    [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:YES];
 }
 
 #pragma mark - CPStageViewControllerDelegate implement
@@ -599,7 +497,6 @@ typedef enum {
 - (void)dismissStageViewController:(CPStageViewController *)stageViewController animated:(BOOL)animated {
     [self dismissViewControllerAnimated:animated completion:nil];
     self.stageViewController = nil;
-    self.state = CPMainViewControllerStateIdle;
 }
 
 #pragma mark - CPStartupHelpManagerDelegate implement
@@ -664,52 +561,33 @@ typedef enum {
 }
 
 - (void)toolBoxManager:(CPToolBoxManager *)toolBoxManager beginDragThumbnailView:(UIView *)view ofBlockClass:(Class)blockClass {
-    if (self.state == CPMainViewControllerStateToolBox) {
-        CGPoint origin = [view convertPoint:view.bounds.origin toView:self.blockBoard];
-        CPBlock *block = [[CPApplicationController defaultController].blockController createBlockOfClass:blockClass atOrigin:origin];
-        CPBlockView *blockView = [self createViewForBlock:block];
-        [self.blockBoard addSubview:blockView];
-        
-        // change state to CPMainViewControllerStateDragBlocks in pickUpFromBlockView
-        [self pickUpFromBlockView:blockView];
-    }
+    CGPoint origin = [view convertPoint:view.bounds.origin toView:self.blockBoard];
+    CPBlock *block = [[CPApplicationController defaultController].blockController createBlockOfClass:blockClass atOrigin:origin];
+    CPBlockView *blockView = [self createViewForBlock:block];
+    [self.blockBoard addSubview:blockView];
+    [self pickUpFromBlockView:blockView];
 }
 
 - (void)toolBoxManager:(CPToolBoxManager *)toolBoxManager moveBlockViewFromLocation:(CGPoint)location inView:(UIView *)view ByTranslation:(CGPoint)translation {
-    if (self.state == CPMainViewControllerStateDragBlocks) {
-        location = [view convertPoint:location toView:self.draggedBlockView];
-        [self moveFromBlockView:self.draggedBlockView location:location byTranslation:translation];
-    }
+    location = [view convertPoint:location toView:self.draggedBlockView];
+    [self moveFromBlockView:self.draggedBlockView location:location byTranslation:translation];
 }
 
 - (void)putDownBlockViewFromToolBoxManager:(CPToolBoxManager *)toolBoxManager {
-    if (self.state == CPMainViewControllerStateDragBlocks) {
-        // change state to CPMainViewControllerStateIdle in pickUpFromBlockView
-        [self putDownFromBlockView:self.draggedBlockView];
-        
-        // modify state to CPMainViewControllerStateToolBox
-        self.state = CPMainViewControllerStateToolBox;
-    }
+    [self putDownFromBlockView:self.draggedBlockView];
 }
 
 - (void)dismissToolBoxManager:(CPToolBoxManager *)toolBoxManager {
-    if (self.state == CPMainViewControllerStateToolBox) {
-        self.state = CPMainViewControllerStateIdle;
-
-        [self.toolBoxManager.view removeFromSuperview];
-        self.toolBoxManager = nil;
-        self.navigationController.navigationBar.alpha = 1.0;
-        self.navigationController.toolbar.alpha = 1.0;
-    }
+    [self.toolBoxManager.view removeFromSuperview];
+    self.toolBoxManager = nil;
+    self.navigationController.navigationBar.alpha = 1.0;
+    self.navigationController.toolbar.alpha = 1.0;
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate implement
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    if (self.state == CPMainViewControllerStateMail) {
-        self.state = CPMainViewControllerStateIdle;
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UIScrollViewDelegate implement
