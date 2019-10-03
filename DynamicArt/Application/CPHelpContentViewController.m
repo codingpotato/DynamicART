@@ -91,6 +91,7 @@
     NSArray *bookmarksOfThisSection = [self.bookmarks objectAtIndex:indexPath.section];
     NSString *htmlPath = [[NSString alloc] initWithFormat:@"%@#%@", [self.sectionHtmls objectAtIndex:indexPath.section], [bookmarksOfThisSection objectAtIndex:indexPath.row]];
     [self.delegate helpContentViewController:self sectionTitle:[self.sectionTitles objectAtIndex:indexPath.section] selectedHtml:htmlPath];
+    [self.presentingViewController dismissViewControllerAnimated:self completion:nil];
 }
 
 @end

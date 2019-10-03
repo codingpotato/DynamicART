@@ -16,7 +16,7 @@
 
 @end
 
-@interface CPHelpViewController : UIViewController <CPHelpContentViewControllerDelegate, UIPopoverControllerDelegate>
+@interface CPHelpViewController : UIViewController
 
 @property (weak, nonatomic) id<CPHelpViewControllerDelegate> delegate;
 

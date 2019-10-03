@@ -8,9 +8,11 @@
 
 #import "CPHelpViewController.h"
 
-#import "WebKit/WebKit.h"
+#import <WebKit/WebKit.h>
 
-@interface CPHelpViewController ()
+#import "CPApplicationController.h"
+
+@interface CPHelpViewController () <CPHelpContentViewControllerDelegate, WKNavigationDelegate>
 
 @property (strong, nonatomic) WKWebView *webView;
 
@@ -40,6 +42,7 @@
     self.navigationItem.rightBarButtonItems = self.rightToolbar.items;
     
     self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+    self.webView.navigationDelegate = self;
     [self.view addSubview:self.webView];
     self.webView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addConstraints:@[
@@ -77,6 +80,16 @@
     self.title = title;
     self.currentRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:htmlPath relativeToURL:self.helpUrl]];
     [self.webView loadRequest:self.currentRequest];
+}
+
+#pragma mark - WKNavigationDelegate implement
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if ([navigationAction.request.URL.scheme isEqualToString:@"codingpotato.dynamicart"]) {
+        [CPApplicationController loadAppFromUrl:navigationAction.request.URL];
+        [self.presentingViewController dismissViewControllerAnimated:self completion:nil];
+    }
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 @end
