@@ -69,6 +69,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSAssert([CPInputFieldManager defaultInputFieldManager].currentInputField, @"");
     [[CPInputFieldManager defaultInputFieldManager].currentInputField autoCompleteViewDidSelectRowAtIndex:(int)indexPath.row];
+    [self.presentingViewController dismissViewControllerAnimated:self completion:nil];
 }
 
 @end

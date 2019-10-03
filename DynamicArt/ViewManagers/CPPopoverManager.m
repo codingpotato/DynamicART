@@ -49,6 +49,7 @@ static CPPopoverManager *_defaultPopoverManager;
 
 - (void)dismissCurrentPopoverAnimated:(BOOL)animated {
     if (self.autoCompleteViewController) {
+        [self.autoCompleteViewController.presentingViewController dismissViewControllerAnimated:self.autoCompleteViewController completion:nil];
         self.autoCompleteViewController = nil;
         [[CPInputFieldManager defaultInputFieldManager] autoCompleteViewDismissed];
     }
