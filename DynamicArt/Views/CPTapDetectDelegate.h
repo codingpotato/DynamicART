@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 codingpotato. All rights reserved.
 //
 
-@protocol CPTapDetectDelegate <NSObject>
+@protocol CPTapDetectDelegate
 
 - (void)view:(UIView *)view singleTapDetected:(UITouch *)touch;
 

@@ -10,7 +10,7 @@
 
 @class CPTitleButton;
 
-@interface CPFullScreenViewController : UIViewController <CPTapDetectDelegate>
+@interface CPFullScreenViewController : UIViewController
 
 @property (nonatomic) BOOL isToolbarHidden;
 

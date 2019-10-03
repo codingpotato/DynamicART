@@ -132,7 +132,7 @@ static const NSUInteger numberOfApplicationsInOneCell = 4;
 
 - (void)applicationViewTapped:(CPApplicationView *)applicationView {
     [[CPApplicationController defaultController] loadApp:applicationView.appName];
-    [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:YES];
+    [self.presentingViewController dismissViewControllerAnimated:self completion:nil];
 }
 
 - (void)applicationViewRequestRemove:(CPApplicationView *)applicationView {

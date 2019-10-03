@@ -11,7 +11,7 @@
 #import "CPInputFieldManager.h"
 #import "CPTitleButton.h"
 
-@interface CPFullScreenViewController ()
+@interface CPFullScreenViewController () <CPTapDetectDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *statusBarBackground;
 

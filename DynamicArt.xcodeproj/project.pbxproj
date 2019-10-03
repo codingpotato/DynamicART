@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C9A2F8C23084A15002D1473 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9A2F8B23084A14002D1473 /* WebKit.framework */; };
 		8CF1AA8A23459EB1006E0234 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1AA8923459EB1006E0234 /* Launch Screen.storyboard */; };
+		8CF1AA8B234608BE006E0234 /* DynamicArt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1AA8D234608BE006E0234 /* DynamicArt.storyboard */; };
 		FC09119A1636D7B100BFED0B /* CPPerformArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0911991636D7B100BFED0B /* CPPerformArgument.m */; };
 		FC0934CB162CD22B001D0E24 /* CPMyStartup.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0934CA162CD22B001D0E24 /* CPMyStartup.m */; };
 		FC0934CF162CD361001D0E24 /* CPMyStartupArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0934CE162CD361001D0E24 /* CPMyStartupArgument.m */; };
@@ -33,7 +34,6 @@
 		FC2168891682041D00E45A86 /* CPApplicationsHelpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2168881682041D00E45A86 /* CPApplicationsHelpManager.m */; };
 		FC21688D168204D100E45A86 /* CPApplicationsHelpManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC21688C168204D100E45A86 /* CPApplicationsHelpManager.xib */; };
 		FC22367F16740F5A009ED66E /* CPColorKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC22367E16740F5A009ED66E /* CPColorKeyboardView.xib */; };
-		FC224F8315D69F92000999FF /* DynamicArt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC224F8215D69F92000999FF /* DynamicArt.storyboard */; };
 		FC2499D31669C91300D8F7DE /* CPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2499B31669C91300D8F7DE /* CPAppDelegate.m */; };
 		FC2499D41669C91300D8F7DE /* CPApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2499B51669C91300D8F7DE /* CPApplicationController.m */; };
 		FC2499D51669C91300D8F7DE /* CPApplicationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2499B71669C91300D8F7DE /* CPApplicationsViewController.m */; };
@@ -401,6 +401,7 @@
 /* Begin PBXFileReference section */
 		8C9A2F8B23084A14002D1473 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8CF1AA8923459EB1006E0234 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		8CF1AA8C234608BE006E0234 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DynamicArt.storyboard; sourceTree = "<group>"; };
 		FC0911981636D7B100BFED0B /* CPPerformArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPerformArgument.h; sourceTree = "<group>"; };
 		FC0911991636D7B100BFED0B /* CPPerformArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPerformArgument.m; sourceTree = "<group>"; };
 		FC0934C9162CD22B001D0E24 /* CPMyStartup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMyStartup.h; sourceTree = "<group>"; };
@@ -443,7 +444,6 @@
 		FC2168881682041D00E45A86 /* CPApplicationsHelpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPApplicationsHelpManager.m; sourceTree = "<group>"; };
 		FC21688C168204D100E45A86 /* CPApplicationsHelpManager.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPApplicationsHelpManager.xib; sourceTree = "<group>"; };
 		FC22367E16740F5A009ED66E /* CPColorKeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPColorKeyboardView.xib; sourceTree = "<group>"; };
-		FC224F8215D69F92000999FF /* DynamicArt.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DynamicArt.storyboard; sourceTree = "<group>"; };
 		FC2499B21669C91300D8F7DE /* CPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAppDelegate.h; sourceTree = "<group>"; };
 		FC2499B31669C91300D8F7DE /* CPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAppDelegate.m; sourceTree = "<group>"; };
 		FC2499B41669C91300D8F7DE /* CPApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPApplicationController.h; sourceTree = "<group>"; };
@@ -1788,7 +1788,7 @@
 			isa = PBXGroup;
 			children = (
 				FC20EA20160D923F00F3B722 /* CPArgumentsDescription.strings */,
-				FC224F8215D69F92000999FF /* DynamicArt.storyboard */,
+				8CF1AA8D234608BE006E0234 /* DynamicArt.storyboard */,
 				FC2F67991605E3DF004F3A46 /* Help */,
 				FC400C061692798F007BB4D9 /* Images */,
 				FC20EA21160D923F00F3B722 /* InfoPlist.strings */,
@@ -1904,7 +1904,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC224F8315D69F92000999FF /* DynamicArt.storyboard in Resources */,
+				8CF1AA8B234608BE006E0234 /* DynamicArt.storyboard in Resources */,
 				FC87DA7E15E87F920011860C /* CPApplicationView.xib in Resources */,
 				FC2F679A1605E3DF004F3A46 /* Help in Resources */,
 				FC20EA22160D923F00F3B722 /* CPArgumentsDescription.strings in Resources */,
@@ -2326,6 +2326,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8CF1AA8D234608BE006E0234 /* DynamicArt.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CF1AA8C234608BE006E0234 /* Base */,
+			);
+			name = DynamicArt.storyboard;
+			sourceTree = "<group>";
+		};
 		FC87B32515D665FF00C61FB2 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

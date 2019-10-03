@@ -14,7 +14,7 @@
 
 @class CPStageViewController;
 
-@protocol CPStageViewControllerDelegate <NSObject>
+@protocol CPStageViewControllerDelegate
 
 - (void)dismissStageViewController:(CPStageViewController *)stageViewController animated:(BOOL)animated;
 

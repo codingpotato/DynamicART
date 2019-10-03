@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="qeA-iS-629">
-    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -39,7 +39,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GhU-BB-Lf9"/>
                                     <barButtonItem style="plain" id="PAe-Jj-YfV">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4oc-8Q-Qku" customClass="CPTitleButton">
-                                            <rect key="frame" x="59" y="5.5" width="650" height="33"/>
+                                            <rect key="frame" x="153" y="5.5" width="462" height="33"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <state key="normal" image="title_down.png">
@@ -165,7 +165,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="czu-ES-22x"/>
                                     <barButtonItem style="plain" id="3Su-RK-2ZZ">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qe7-DA-haM">
-                                            <rect key="frame" x="65" y="4" width="706" height="36"/>
+                                            <rect key="frame" x="153" y="4" width="462" height="36"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <state key="normal">
@@ -230,7 +230,7 @@
         <!--Log-->
         <scene sceneID="Lta-01-Kbe">
             <objects>
-                <viewController title="Log" id="h7h-pv-weu" customClass="CPLogViewController" sceneMemberID="viewController">
+                <viewController id="h7h-pv-weu" customClass="CPLogViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mDF-HS-dZj"/>
                         <viewControllerLayoutGuide type="bottom" id="oCI-3p-UfB"/>
