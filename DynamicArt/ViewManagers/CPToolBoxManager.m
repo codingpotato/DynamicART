@@ -309,7 +309,7 @@ static const CGFloat _toolBoxShowHideDuration = 0.3;
 }
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)panGesture {
-    if (panGesture.state == UIGestureRecognizerStateChanged) {
+    if (panGesture.state == UIGestureRecognizerStateChanged && self.view.hidden == YES) {
         CGPoint location = [panGesture locationInView:self.view];
         CGPoint translation = [panGesture translationInView:self.view];
         [self.delegate toolBoxManager:self moveBlockViewFromLocation:location inView:self.view ByTranslation:translation];

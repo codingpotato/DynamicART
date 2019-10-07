@@ -12,7 +12,7 @@
 #import "CPInputField.h"
 #import "CPInputFieldManager.h"
 
-@interface CPPopoverManager ()
+@interface CPPopoverManager () <UIPopoverPresentationControllerDelegate>
 
 @property (strong, nonatomic) CPAutoCompleteViewController *autoCompleteViewController;
 
@@ -35,6 +35,7 @@ static CPPopoverManager *_defaultPopoverManager;
     self.autoCompleteViewController = [[CPAutoCompleteViewController alloc] init];
     self.autoCompleteViewController.modalPresentationStyle = UIModalPresentationPopover;
     UIPopoverPresentationController* popoverController = self.autoCompleteViewController.popoverPresentationController;
+    popoverController.delegate = self;
     popoverController.sourceView = view;
     popoverController.sourceRect = rect;
     popoverController.permittedArrowDirections = UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown | UIPopoverArrowDirectionRight;
@@ -59,6 +60,13 @@ static CPPopoverManager *_defaultPopoverManager;
 
 + (void)releaseCache {
     _defaultPopoverManager = nil;
+}
+
+#pragma mark - UIPopoverPresentationControllerDelegate implement
+
+- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    [[CPInputFieldManager defaultInputFieldManager] autoCompleteViewDismissed];
+    self.autoCompleteViewController = nil;
 }
 
 @end

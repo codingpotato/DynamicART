@@ -488,7 +488,6 @@
         [self.blockBoard setContentOffset:CPPointTranslateByY(self.blockBoard.contentOffset, -self.scrollUpHeight) animated:NO];
         self.scrollUpHeight = 0.0;
     }
-    // callback of CPPopoverManager will set state to CPMainViewControllerStateIdle
     [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:YES];
 }
 

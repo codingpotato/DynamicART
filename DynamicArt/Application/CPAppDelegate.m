@@ -13,6 +13,10 @@
 @implementation CPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSURL *url = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
+    if (url) {
+        [CPApplicationController loadAppFromUrl:url];
+    }
     return YES;
 }
 

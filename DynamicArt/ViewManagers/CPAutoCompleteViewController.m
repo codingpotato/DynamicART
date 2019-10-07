@@ -14,15 +14,11 @@
 @implementation CPAutoCompleteViewController
 
 - (id)init {
-    self = [super init];
-    if (self) {
+    if (self = [super init]) {
         NSAssert([CPInputFieldManager defaultInputFieldManager].currentInputField, @"");
         self.preferredContentSize = [CPInputFieldManager defaultInputFieldManager].currentInputField.contentSizeOfAutoCompleteView;
     }
     return self;
-}
-
-- (void)setContentSize {
 }
 
 - (void)viewWillAppear:(BOOL)animated {
