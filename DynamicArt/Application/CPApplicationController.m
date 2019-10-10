@@ -245,6 +245,11 @@ static BOOL _observerAdded = NO;
                 self.isLoadingFromUrl = NO;
                 self.mailBodyParser = nil;
             }]];
+            UIWindow* alertWindow = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+            alertWindow.rootViewController = [[UIViewController alloc] init];
+            alertWindow.windowLevel = UIWindowLevelAlert;
+            [alertWindow makeKeyAndVisible];
+            [alertWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
             
             // keep mailBodyParser object for using in alert view delegate method
             self.isLoadingFromUrl = YES;
