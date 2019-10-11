@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C9A2F8C23084A15002D1473 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9A2F8B23084A14002D1473 /* WebKit.framework */; };
-		8CF1AA8A23459EB1006E0234 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1AA8923459EB1006E0234 /* Launch Screen.storyboard */; };
+		8CF1AA8A23459EB1006E0234 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1AA8923459EB1006E0234 /* LaunchScreen.storyboard */; };
 		8CF1AA8B234608BE006E0234 /* DynamicArt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1AA8D234608BE006E0234 /* DynamicArt.storyboard */; };
 		FC09119A1636D7B100BFED0B /* CPPerformArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0911991636D7B100BFED0B /* CPPerformArgument.m */; };
 		FC0934CB162CD22B001D0E24 /* CPMyStartup.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0934CA162CD22B001D0E24 /* CPMyStartup.m */; };
@@ -400,7 +400,7 @@
 
 /* Begin PBXFileReference section */
 		8C9A2F8B23084A14002D1473 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		8CF1AA8923459EB1006E0234 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		8CF1AA8923459EB1006E0234 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CF1AA8C234608BE006E0234 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DynamicArt.storyboard; sourceTree = "<group>"; };
 		FC0911981636D7B100BFED0B /* CPPerformArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPerformArgument.h; sourceTree = "<group>"; };
 		FC0911991636D7B100BFED0B /* CPPerformArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPPerformArgument.m; sourceTree = "<group>"; };
@@ -1792,7 +1792,7 @@
 				FC2F67991605E3DF004F3A46 /* Help */,
 				FC400C061692798F007BB4D9 /* Images */,
 				FC20EA21160D923F00F3B722 /* InfoPlist.strings */,
-				8CF1AA8923459EB1006E0234 /* Launch Screen.storyboard */,
+				8CF1AA8923459EB1006E0234 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1921,7 +1921,7 @@
 				FC59083F16B363A600BE808F /* align@2x.png in Resources */,
 				FC59084016B363A600BE808F /* alpha_bg.png in Resources */,
 				FC59084116B363A600BE808F /* application_bg.png in Resources */,
-				8CF1AA8A23459EB1006E0234 /* Launch Screen.storyboard in Resources */,
+				8CF1AA8A23459EB1006E0234 /* LaunchScreen.storyboard in Resources */,
 				FC59084216B363A600BE808F /* application_bg@2x.png in Resources */,
 				FC59084916B363D200BE808F /* application_highlight.png in Resources */,
 				FC59084A16B363D200BE808F /* application_highlight@2x.png in Resources */,
@@ -2449,6 +2449,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DynamicArt/DynamicArt-Prefix.pch";
@@ -2472,6 +2473,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DynamicArt/DynamicArt-Prefix.pch";

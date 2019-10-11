@@ -131,7 +131,7 @@
     }
 }
 
--(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     self.turtleImageView.center = self.position;
     self.turtleImageView.transform = CGAffineTransformMakeRotation(self.angle * M_PI / 180.0);
     self.size = self.stage.bounds.size;

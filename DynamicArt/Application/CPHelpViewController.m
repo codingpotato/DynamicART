@@ -18,8 +18,6 @@
 
 @property (strong, nonatomic) NSURL *helpUrl;
 
-@property (strong, nonatomic) NSURLRequest *currentRequest;
-
 @property (strong, nonatomic) IBOutlet UIToolbar *rightToolbar;
 
 @end
@@ -50,8 +48,7 @@
                                 [NSLayoutConstraint constraintWithItem:self.webView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0],
                                 [NSLayoutConstraint constraintWithItem:self.webView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1 constant:0],
                                 [NSLayoutConstraint constraintWithItem:self.webView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:0]]];
-    self.currentRequest = [NSURLRequest requestWithURL:self.helpUrl];
-    [self.webView loadRequest:self.currentRequest];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:self.helpUrl]];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -78,8 +75,7 @@
 
 - (void)helpContentViewController:(CPHelpContentViewController *)helpContentViewController sectionTitle:(NSString *)title selectedHtml:(NSString *)htmlPath {
     self.title = title;
-    self.currentRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:htmlPath relativeToURL:self.helpUrl]];
-    [self.webView loadRequest:self.currentRequest];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlPath relativeToURL:self.helpUrl]]];
 }
 
 #pragma mark - WKNavigationDelegate implement
