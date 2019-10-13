@@ -27,6 +27,11 @@
                                     <outlet property="tapDetectDelegate" destination="qeA-iS-629" id="aLG-xe-S0D"/>
                                 </connections>
                             </scrollView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQG-qW-0eu" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="20"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="nzx-qG-B5u" userLabel="Top Toolbar">
                                 <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -39,7 +44,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GhU-BB-Lf9"/>
                                     <barButtonItem style="plain" id="PAe-Jj-YfV">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4oc-8Q-Qku" customClass="CPTitleButton">
-                                            <rect key="frame" x="153" y="6" width="462" height="33"/>
+                                            <rect key="frame" x="153" y="5.5" width="462" height="33"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <state key="normal" image="title_down.png">
@@ -94,11 +99,6 @@
                                 </items>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQG-qW-0eu" userLabel="Status Bar Background">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="20"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="trash.png" translatesAutoresizingMaskIntoConstraints="NO" id="TTe-dM-Abj">
                                 <rect key="frame" x="768" y="852" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
@@ -121,7 +121,7 @@
                         <segue destination="7X4-hd-Izm" kind="popover" identifier="CPApplicationsSegue" popoverAnchorBarButtonItem="PAe-Jj-YfV" id="FAa-JX-NYg">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
-                        <segue destination="NpJ-uz-xTg" kind="modal" identifier="CPStageSegue" modalPresentationStyle="currentContext" modalTransitionStyle="flipHorizontal" id="ZMP-ia-PHK"/>
+                        <segue destination="NpJ-uz-xTg" kind="modal" identifier="CPStageSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="ZMP-ia-PHK"/>
                         <segue destination="DZZ-Lw-cIR" kind="modal" identifier="CPHelpSegue" modalPresentationStyle="fullScreen" id="H4K-JL-Sj7"/>
                     </connections>
                 </viewController>
@@ -139,23 +139,20 @@
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eSm-rB-axE">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfU-u0-cIP" customClass="CPStageView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <imageView contentMode="TopLeft" translatesAutoresizingMaskIntoConstraints="NO" id="rfU-u0-cIP" customClass="CPStageView">
+                                <rect key="frame" x="-128" y="0.0" width="1024" height="1024"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rfU-u0-cIP" secondAttribute="height" multiplier="1:1" id="J9Z-XT-UOT"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="NpJ-uz-xTg" id="GP0-DC-ugW"/>
                                     <outlet property="tapDetectDelegate" destination="NpJ-uz-xTg" id="EHR-eF-2Ye"/>
                                 </connections>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="turtle.png" translatesAutoresizingMaskIntoConstraints="NO" id="g7b-dY-A7J">
-                                <rect key="frame" x="372" y="499" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="wIE-xt-8u7" userLabel="Top Toolbar">
-                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="wIE-xt-8u7" userLabel="Top Toolbar">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                                 <items>
                                     <barButtonItem image="stop.png" id="pya-kB-olg">
                                         <connections>
@@ -165,7 +162,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="czu-ES-22x"/>
                                     <barButtonItem style="plain" id="3Su-RK-2ZZ">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qe7-DA-haM">
-                                            <rect key="frame" x="153" y="4" width="462" height="36"/>
+                                            <rect key="frame" x="153" y="7" width="462" height="36"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <state key="normal">
@@ -189,9 +186,8 @@
                                 </items>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="NaL-Yc-ccl" userLabel="Bottom Toolbar">
-                                <rect key="frame" x="0.0" y="980" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="NaL-Yc-ccl" userLabel="Bottom Toolbar">
+                                <rect key="frame" x="0.0" y="974" width="768" height="50"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Mug-I8-GSP"/>
                                     <barButtonItem image="log.png" id="ZeW-EE-8wX">
@@ -202,19 +198,29 @@
                                 </items>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dT9-ph-mZb" userLabel="Status Bar Background">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="20"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="turtle.png" translatesAutoresizingMaskIntoConstraints="NO" id="g7b-dY-A7J">
+                                <rect key="frame" x="372" y="499" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NaL-Yc-ccl" secondAttribute="trailing" id="5Dz-vM-MGu"/>
+                            <constraint firstItem="I39-YL-nk5" firstAttribute="top" secondItem="rfU-u0-cIP" secondAttribute="bottom" id="5Hi-kV-cl6"/>
+                            <constraint firstItem="wIE-xt-8u7" firstAttribute="top" secondItem="YYj-yc-qhz" secondAttribute="bottom" id="8iu-Su-hBV"/>
+                            <constraint firstItem="rfU-u0-cIP" firstAttribute="top" secondItem="YYj-yc-qhz" secondAttribute="bottom" id="Gta-mT-Owg"/>
+                            <constraint firstItem="I39-YL-nk5" firstAttribute="top" secondItem="NaL-Yc-ccl" secondAttribute="bottom" id="ITT-XN-MSn"/>
+                            <constraint firstItem="rfU-u0-cIP" firstAttribute="centerX" secondItem="eSm-rB-axE" secondAttribute="centerX" id="Tcj-vT-pkt"/>
+                            <constraint firstItem="NaL-Yc-ccl" firstAttribute="leading" secondItem="eSm-rB-axE" secondAttribute="leading" id="hDJ-8b-sav"/>
+                            <constraint firstItem="wIE-xt-8u7" firstAttribute="leading" secondItem="eSm-rB-axE" secondAttribute="leading" id="msf-HQ-KEQ"/>
+                            <constraint firstAttribute="trailing" secondItem="wIE-xt-8u7" secondAttribute="trailing" id="ocn-v8-GQM"/>
+                            <constraint firstItem="rfU-u0-cIP" firstAttribute="centerY" secondItem="eSm-rB-axE" secondAttribute="centerY" id="vud-Wr-PiT"/>
+                        </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="actionBarButtonItem" destination="NH6-yt-VSH" id="D5K-e4-sf0"/>
                         <outlet property="bottomToolbar" destination="NaL-Yc-ccl" id="zHI-3t-6BO"/>
                         <outlet property="stage" destination="rfU-u0-cIP" id="4wh-KB-raG"/>
-                        <outlet property="statusBarBackground" destination="dT9-ph-mZb" id="fgn-xH-d27"/>
                         <outlet property="titleButton" destination="Qe7-DA-haM" id="yv7-gu-4lK"/>
                         <outlet property="topToolbar" destination="wIE-xt-8u7" id="pgM-80-fY2"/>
                         <outlet property="turtleImageView" destination="g7b-dY-A7J" id="tx7-Bt-PbS"/>

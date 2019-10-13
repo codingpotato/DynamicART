@@ -132,9 +132,13 @@
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    self.turtleImageView.center = self.position;
-    self.turtleImageView.transform = CGAffineTransformMakeRotation(self.angle * M_PI / 180.0);
-    self.size = self.stage.bounds.size;
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        //self.turtleImageView.transform = CGAffineTransformIdentity;
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        //self.turtleImageView.center = self.position;
+        //self.turtleImageView.transform = CGAffineTransformMakeRotation(self.angle * M_PI / 180.0);
+        //self.size = self.stage.bounds.size;
+    }];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
