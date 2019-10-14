@@ -21,6 +21,8 @@
 
 @interface CPStageViewController ()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *stageViewHeightConstraint;
+
 @property (nonatomic) BOOL executing;
 
 @property (nonatomic) BOOL needRefresh;
@@ -106,22 +108,20 @@
 
 #pragma mark - lifecycle methods
 
-- (void)dealloc {
-    CPTrace(@"%@ dealloc", self);
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.stageViewHeightConstraint.constant = fmax(self.view.bounds.size.width, self.view.bounds.size.height);
+    [self.view layoutIfNeeded];
     [self startExecute];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    if (self.logViewController) {
-        [[CPPopoverManager defaultPopoverManager] dismissCurrentPopoverAnimated:NO];
-    }
-    
     [self stopExecute];
     [super viewWillDisappear:animated];
+}
+
+- (void)dealloc {
+    CPTrace(@"%@ dealloc", self);
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -132,12 +132,11 @@
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    self.turtleImageView.hidden = YES;
+    self.turtleImageView.transform = CGAffineTransformIdentity;
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-        //self.turtleImageView.transform = CGAffineTransformIdentity;
     } completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-        //self.turtleImageView.center = self.position;
-        //self.turtleImageView.transform = CGAffineTransformMakeRotation(self.angle * M_PI / 180.0);
-        //self.size = self.stage.bounds.size;
+        [self moveTurtle];
     }];
 }
 
@@ -217,12 +216,11 @@
     if (!self.executing) {
         self.executing = YES;
 
-        CGFloat stageWidth = fmax(self.stage.bounds.size.width, self.stage.bounds.size.height);
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(stageWidth, stageWidth), YES, self.stage.image.scale);
+        UIGraphicsBeginImageContextWithOptions(self.stage.bounds.size, YES, self.stage.image.scale);
         self.context = UIGraphicsGetCurrentContext();
         CGContextSetFillColorWithColor(self.context, [UIColor blackColor].CGColor);
         CGContextBeginPath(self.context);
-        CGContextAddRect(self.context, CGRectMake(0.0, 0.0, stageWidth, stageWidth));
+        CGContextAddRect(self.context, CGRectMake(0.0, 0.0, self.stage.bounds.size.width, self.stage.bounds.size.height));
         CGContextFillPath(self.context);
         self.stage.image = UIGraphicsGetImageFromCurrentImageContext();
         
@@ -230,7 +228,7 @@
         self.logLineCount = 0;
         
         self.size = self.stage.bounds.size;
-        self.position = CGPointMake(self.size.width / 2, self.size.height / 2);
+        self.position = CGPointMake(self.stage.bounds.size.width / 2, self.stage.bounds.size.height / 2);
         self.angle = 0.0;
         self.penDown = YES;
         self.turtleShown = YES;
@@ -283,6 +281,12 @@
 
 - (void)signalCondition:(NSCondition *)condition {
     [[CPApplicationController defaultController].blockController.conditions signalCondition:condition];
+}
+
+- (void)moveTurtle {
+    self.turtleImageView.center = [self.stage convertPoint:self.position toView:self.view];
+    self.turtleImageView.transform = CGAffineTransformMakeRotation(self.angle * M_PI / 180.0);
+    self.turtleImageView.hidden = !self.turtleShown;
 }
 
 #pragma mark - CPDrawContext implement
@@ -368,11 +372,7 @@
 - (void)refresh {
     if (self.needRefresh) {
         self.stage.image = UIGraphicsGetImageFromCurrentImageContext();
-        
-        self.turtleImageView.center = self.position;
-        self.turtleImageView.transform = CGAffineTransformMakeRotation(self.angle * M_PI / 180.0);
-        self.turtleImageView.hidden = !self.turtleShown;
-        
+        [self moveTurtle];
         self.needRefresh = NO;
     }
 }

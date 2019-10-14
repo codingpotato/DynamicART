@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="qeA-iS-629">
-    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="dark"/>
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -145,6 +145,7 @@
                                 <rect key="frame" x="-128" y="0.0" width="1024" height="1024"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rfU-u0-cIP" secondAttribute="height" multiplier="1:1" id="J9Z-XT-UOT"/>
+                                    <constraint firstAttribute="height" constant="1024" id="K7D-9j-5V8"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="NpJ-uz-xTg" id="GP0-DC-ugW"/>
@@ -199,15 +200,13 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="turtle.png" translatesAutoresizingMaskIntoConstraints="NO" id="g7b-dY-A7J">
-                                <rect key="frame" x="372" y="499" width="25" height="25"/>
+                                <rect key="frame" x="372" y="500" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NaL-Yc-ccl" secondAttribute="trailing" id="5Dz-vM-MGu"/>
-                            <constraint firstItem="I39-YL-nk5" firstAttribute="top" secondItem="rfU-u0-cIP" secondAttribute="bottom" id="5Hi-kV-cl6"/>
                             <constraint firstItem="wIE-xt-8u7" firstAttribute="top" secondItem="YYj-yc-qhz" secondAttribute="bottom" id="8iu-Su-hBV"/>
-                            <constraint firstItem="rfU-u0-cIP" firstAttribute="top" secondItem="YYj-yc-qhz" secondAttribute="bottom" id="Gta-mT-Owg"/>
                             <constraint firstItem="I39-YL-nk5" firstAttribute="top" secondItem="NaL-Yc-ccl" secondAttribute="bottom" id="ITT-XN-MSn"/>
                             <constraint firstItem="rfU-u0-cIP" firstAttribute="centerX" secondItem="eSm-rB-axE" secondAttribute="centerX" id="Tcj-vT-pkt"/>
                             <constraint firstItem="NaL-Yc-ccl" firstAttribute="leading" secondItem="eSm-rB-axE" secondAttribute="leading" id="hDJ-8b-sav"/>
@@ -221,6 +220,7 @@
                         <outlet property="actionBarButtonItem" destination="NH6-yt-VSH" id="D5K-e4-sf0"/>
                         <outlet property="bottomToolbar" destination="NaL-Yc-ccl" id="zHI-3t-6BO"/>
                         <outlet property="stage" destination="rfU-u0-cIP" id="4wh-KB-raG"/>
+                        <outlet property="stageViewHeightConstraint" destination="K7D-9j-5V8" id="sL2-Op-eaX"/>
                         <outlet property="titleButton" destination="Qe7-DA-haM" id="yv7-gu-4lK"/>
                         <outlet property="topToolbar" destination="wIE-xt-8u7" id="pgM-80-fY2"/>
                         <outlet property="turtleImageView" destination="g7b-dY-A7J" id="tx7-Bt-PbS"/>
