@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 codingpotato. All rights reserved.
 //
 
-@class CPAutoCompleteViewController;
-
 @interface CPAutoCompleteViewController : UITableViewController
 
 @end

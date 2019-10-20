@@ -9,6 +9,7 @@
 #import "CPStageViewController.h"
 
 #import "CPApplicationController.h"
+#import "CPAppStoreReviewManager.h"
 #import "CPLogViewController.h"
 #import "CPMailBodyParser.h"
 #import "CPTrace.h"
@@ -136,7 +137,7 @@
     self.turtleImageView.transform = CGAffineTransformIdentity;
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
     } completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-        [self moveTurtle];
+        [self placeTurtle];
     }];
 }
 
@@ -249,6 +250,8 @@
         self.title = blockController.appName;
         [blockController addObserver:self forKeyPath:CPBlockControllerKeyPathUICommand options:NSKeyValueObservingOptionNew context:nil];
         [blockController startExecute];
+        
+        [CPAppStoreReviewManager requestReviewIfAppropriate];
     }
 }
 
@@ -283,7 +286,7 @@
     [[CPApplicationController defaultController].blockController.conditions signalCondition:condition];
 }
 
-- (void)moveTurtle {
+- (void)placeTurtle {
     self.turtleImageView.center = [self.stage convertPoint:self.position toView:self.view];
     self.turtleImageView.transform = CGAffineTransformMakeRotation(self.angle * M_PI / 180.0);
     self.turtleImageView.hidden = !self.turtleShown;
@@ -372,7 +375,7 @@
 - (void)refresh {
     if (self.needRefresh) {
         self.stage.image = UIGraphicsGetImageFromCurrentImageContext();
-        [self moveTurtle];
+        [self placeTurtle];
         self.needRefresh = NO;
     }
 }

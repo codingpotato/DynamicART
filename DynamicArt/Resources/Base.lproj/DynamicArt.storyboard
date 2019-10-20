@@ -144,16 +144,27 @@
                             <imageView contentMode="TopLeft" translatesAutoresizingMaskIntoConstraints="NO" id="rfU-u0-cIP" customClass="CPStageView">
                                 <rect key="frame" x="-128" y="0.0" width="1024" height="1024"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="rfU-u0-cIP" secondAttribute="height" multiplier="1:1" id="J9Z-XT-UOT"/>
-                                    <constraint firstAttribute="height" constant="1024" id="K7D-9j-5V8"/>
+                                    <constraint firstAttribute="height" constant="1024" id="HkL-VA-7hH"/>
+                                    <constraint firstAttribute="width" secondItem="rfU-u0-cIP" secondAttribute="height" multiplier="1:1" id="h8c-8f-TRZ"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="NpJ-uz-xTg" id="GP0-DC-ugW"/>
                                     <outlet property="tapDetectDelegate" destination="NpJ-uz-xTg" id="EHR-eF-2Ye"/>
                                 </connections>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="turtle.png" translatesAutoresizingMaskIntoConstraints="NO" id="g7b-dY-A7J">
+                                <rect key="frame" x="371" y="499" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K7j-W1-b9v" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="20"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="W7I-vY-3bq"/>
+                                </constraints>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="wIE-xt-8u7" userLabel="Top Toolbar">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
+                                <rect key="frame" x="0.0" y="20" width="768" height="50"/>
                                 <items>
                                     <barButtonItem image="stop.png" id="pya-kB-olg">
                                         <connections>
@@ -199,20 +210,19 @@
                                 </items>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="turtle.png" translatesAutoresizingMaskIntoConstraints="NO" id="g7b-dY-A7J">
-                                <rect key="frame" x="372" y="500" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="NaL-Yc-ccl" secondAttribute="trailing" id="5Dz-vM-MGu"/>
-                            <constraint firstItem="wIE-xt-8u7" firstAttribute="top" secondItem="YYj-yc-qhz" secondAttribute="bottom" id="8iu-Su-hBV"/>
-                            <constraint firstItem="I39-YL-nk5" firstAttribute="top" secondItem="NaL-Yc-ccl" secondAttribute="bottom" id="ITT-XN-MSn"/>
-                            <constraint firstItem="rfU-u0-cIP" firstAttribute="centerX" secondItem="eSm-rB-axE" secondAttribute="centerX" id="Tcj-vT-pkt"/>
-                            <constraint firstItem="NaL-Yc-ccl" firstAttribute="leading" secondItem="eSm-rB-axE" secondAttribute="leading" id="hDJ-8b-sav"/>
-                            <constraint firstItem="wIE-xt-8u7" firstAttribute="leading" secondItem="eSm-rB-axE" secondAttribute="leading" id="msf-HQ-KEQ"/>
-                            <constraint firstAttribute="trailing" secondItem="wIE-xt-8u7" secondAttribute="trailing" id="ocn-v8-GQM"/>
-                            <constraint firstItem="rfU-u0-cIP" firstAttribute="centerY" secondItem="eSm-rB-axE" secondAttribute="centerY" id="vud-Wr-PiT"/>
+                            <constraint firstAttribute="trailing" secondItem="wIE-xt-8u7" secondAttribute="trailing" id="2Yi-Ef-mZn"/>
+                            <constraint firstAttribute="trailing" secondItem="NaL-Yc-ccl" secondAttribute="trailing" id="FYB-Gc-0hg"/>
+                            <constraint firstAttribute="trailing" secondItem="K7j-W1-b9v" secondAttribute="trailing" id="Hki-Bn-5bA"/>
+                            <constraint firstItem="K7j-W1-b9v" firstAttribute="leading" secondItem="eSm-rB-axE" secondAttribute="leading" id="IGc-4a-kAV"/>
+                            <constraint firstItem="I39-YL-nk5" firstAttribute="top" secondItem="NaL-Yc-ccl" secondAttribute="bottom" id="U1O-rj-JpM"/>
+                            <constraint firstItem="wIE-xt-8u7" firstAttribute="top" secondItem="K7j-W1-b9v" secondAttribute="bottom" id="dIZ-Us-Y8V"/>
+                            <constraint firstItem="wIE-xt-8u7" firstAttribute="leading" secondItem="eSm-rB-axE" secondAttribute="leading" id="nKn-k7-5qM"/>
+                            <constraint firstItem="rfU-u0-cIP" firstAttribute="centerY" secondItem="eSm-rB-axE" secondAttribute="centerY" id="o2d-f1-Zx0"/>
+                            <constraint firstItem="NaL-Yc-ccl" firstAttribute="leading" secondItem="eSm-rB-axE" secondAttribute="leading" id="oFd-nw-qlA"/>
+                            <constraint firstItem="K7j-W1-b9v" firstAttribute="top" secondItem="eSm-rB-axE" secondAttribute="top" id="v7T-uC-xE1"/>
+                            <constraint firstItem="rfU-u0-cIP" firstAttribute="centerX" secondItem="eSm-rB-axE" secondAttribute="centerX" id="whH-Rw-MQm"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -220,7 +230,8 @@
                         <outlet property="actionBarButtonItem" destination="NH6-yt-VSH" id="D5K-e4-sf0"/>
                         <outlet property="bottomToolbar" destination="NaL-Yc-ccl" id="zHI-3t-6BO"/>
                         <outlet property="stage" destination="rfU-u0-cIP" id="4wh-KB-raG"/>
-                        <outlet property="stageViewHeightConstraint" destination="K7D-9j-5V8" id="sL2-Op-eaX"/>
+                        <outlet property="stageViewHeightConstraint" destination="HkL-VA-7hH" id="Mc4-J1-4XV"/>
+                        <outlet property="statusBarBackground" destination="K7j-W1-b9v" id="uky-y5-dQu"/>
                         <outlet property="titleButton" destination="Qe7-DA-haM" id="yv7-gu-4lK"/>
                         <outlet property="topToolbar" destination="wIE-xt-8u7" id="pgM-80-fY2"/>
                         <outlet property="turtleImageView" destination="g7b-dY-A7J" id="tx7-Bt-PbS"/>

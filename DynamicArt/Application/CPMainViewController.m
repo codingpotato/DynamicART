@@ -231,7 +231,6 @@
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification {
     [self dismissToolBoxManager:nil];
-
     [self unloadBlockViews];
     
     CPApplicationController *applicationController = [CPApplicationController defaultController];

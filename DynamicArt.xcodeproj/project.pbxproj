@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8C9A2F8C23084A15002D1473 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9A2F8B23084A14002D1473 /* WebKit.framework */; };
+		8CEC50B3235C353A00F6F3A6 /* CPAppStoreReviewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEC50B2235C353A00F6F3A6 /* CPAppStoreReviewManager.m */; };
+		8CEC50B6235C364600F6F3A6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CEC50B5235C364600F6F3A6 /* StoreKit.framework */; };
 		8CF1AA8A23459EB1006E0234 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1AA8923459EB1006E0234 /* LaunchScreen.storyboard */; };
 		8CF1AA8B234608BE006E0234 /* DynamicArt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1AA8D234608BE006E0234 /* DynamicArt.storyboard */; };
 		FC09119A1636D7B100BFED0B /* CPPerformArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0911991636D7B100BFED0B /* CPPerformArgument.m */; };
@@ -400,6 +402,9 @@
 
 /* Begin PBXFileReference section */
 		8C9A2F8B23084A14002D1473 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		8CEC50B2235C353A00F6F3A6 /* CPAppStoreReviewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPAppStoreReviewManager.m; sourceTree = "<group>"; };
+		8CEC50B4235C356000F6F3A6 /* CPAppStoreReviewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPAppStoreReviewManager.h; sourceTree = "<group>"; };
+		8CEC50B5235C364600F6F3A6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8CF1AA8923459EB1006E0234 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CF1AA8C234608BE006E0234 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DynamicArt.storyboard; sourceTree = "<group>"; };
 		FC0911981636D7B100BFED0B /* CPPerformArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPPerformArgument.h; sourceTree = "<group>"; };
@@ -1016,6 +1021,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CEC50B6235C364600F6F3A6 /* StoreKit.framework in Frameworks */,
 				8C9A2F8C23084A15002D1473 /* WebKit.framework in Frameworks */,
 				FC4096351AA3166400FC2349 /* AVFoundation.framework in Frameworks */,
 				FC41458016625964001DEFE1 /* AudioToolbox.framework in Frameworks */,
@@ -1044,31 +1050,33 @@
 			isa = PBXGroup;
 			children = (
 				FC2499B21669C91300D8F7DE /* CPAppDelegate.h */,
-				FC2499B31669C91300D8F7DE /* CPAppDelegate.m */,
 				FC2499B41669C91300D8F7DE /* CPApplicationController.h */,
-				FC2499B51669C91300D8F7DE /* CPApplicationController.m */,
 				FC2499B61669C91300D8F7DE /* CPApplicationsViewController.h */,
-				FC2499B71669C91300D8F7DE /* CPApplicationsViewController.m */,
+				8CEC50B4235C356000F6F3A6 /* CPAppStoreReviewManager.h */,
 				FC2499B81669C91300D8F7DE /* CPCacheManager.h */,
-				FC2499B91669C91300D8F7DE /* CPCacheManager.m */,
 				FC2499BA1669C91300D8F7DE /* CPFullScreenViewController.h */,
-				FC2499BB1669C91300D8F7DE /* CPFullScreenViewController.m */,
 				FC2499BC1669C91300D8F7DE /* CPGeometryHelper.h */,
 				FC2499BD1669C91300D8F7DE /* CPHelpContentViewController.h */,
-				FC2499BE1669C91300D8F7DE /* CPHelpContentViewController.m */,
 				FC2499BF1669C91300D8F7DE /* CPHelpViewController.h */,
-				FC2499C01669C91300D8F7DE /* CPHelpViewController.m */,
 				FC2499C11669C91300D8F7DE /* CPImageCache.h */,
-				FC2499C21669C91300D8F7DE /* CPImageCache.m */,
 				FC2499C31669C91300D8F7DE /* CPLogViewController.h */,
-				FC2499C41669C91300D8F7DE /* CPLogViewController.m */,
 				FC2499C51669C91300D8F7DE /* CPMailBodyParser.h */,
-				FC2499C61669C91300D8F7DE /* CPMailBodyParser.m */,
 				FC2499C71669C91300D8F7DE /* CPMainViewController.h */,
-				FC2499C81669C91300D8F7DE /* CPMainViewController.m */,
 				FC2499CD1669C91300D8F7DE /* CPStageViewController.h */,
-				FC2499CE1669C91300D8F7DE /* CPStageViewController.m */,
 				FC2499CF1669C91300D8F7DE /* CPTrace.h */,
+				FC2499B31669C91300D8F7DE /* CPAppDelegate.m */,
+				FC2499B51669C91300D8F7DE /* CPApplicationController.m */,
+				FC2499B71669C91300D8F7DE /* CPApplicationsViewController.m */,
+				8CEC50B2235C353A00F6F3A6 /* CPAppStoreReviewManager.m */,
+				FC2499B91669C91300D8F7DE /* CPCacheManager.m */,
+				FC2499BB1669C91300D8F7DE /* CPFullScreenViewController.m */,
+				FC2499BE1669C91300D8F7DE /* CPHelpContentViewController.m */,
+				FC2499C01669C91300D8F7DE /* CPHelpViewController.m */,
+				FC2499C21669C91300D8F7DE /* CPImageCache.m */,
+				FC2499C41669C91300D8F7DE /* CPLogViewController.m */,
+				FC2499C61669C91300D8F7DE /* CPMailBodyParser.m */,
+				FC2499C81669C91300D8F7DE /* CPMainViewController.m */,
+				FC2499CE1669C91300D8F7DE /* CPStageViewController.m */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1707,6 +1715,7 @@
 		FC87B2FD15D665FF00C61FB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8CEC50B5235C364600F6F3A6 /* StoreKit.framework */,
 				8C9A2F8B23084A14002D1473 /* WebKit.framework */,
 				FC4096341AA3166400FC2349 /* AVFoundation.framework */,
 				FC41457F16625964001DEFE1 /* AudioToolbox.framework */,
@@ -2237,6 +2246,7 @@
 				FCD2156B1636DC190072C7FD /* CPPerformArgumentView.m in Sources */,
 				FCD2156F1636DCE40072C7FD /* CPMyStartupInputField.m in Sources */,
 				FCD6AED116375E310018517F /* CPPerformInputField.m in Sources */,
+				8CEC50B3235C353A00F6F3A6 /* CPAppStoreReviewManager.m in Sources */,
 				FC131EF01638AF94000DF272 /* CPArrayInputField.m in Sources */,
 				FC1CA6381641648A0038DE77 /* CPLeftValueVariableInputField.m in Sources */,
 				FC1DF6BF164F9460004D2D11 /* CPTextInputField.m in Sources */,
