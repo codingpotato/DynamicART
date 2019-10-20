@@ -21,8 +21,8 @@ static NSInteger minimumReviewWorthyActionCount = 10;
     actionCount += 1;
     [NSUserDefaults.standardUserDefaults setInteger:actionCount forKey:kReviewWorthyActionCountKey];
     if (actionCount >= minimumReviewWorthyActionCount) {
-        NSString* currentVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
-        NSString* lastVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:kLastReviewRequestAppVersionKey];
+        NSString* currentVersion = [NSBundle.mainBundle.infoDictionary objectForKey:@"CFBundleShortVersionString"];
+        NSString* lastVersion = [NSUserDefaults.standardUserDefaults objectForKey:kLastReviewRequestAppVersionKey];
         if (![lastVersion isEqualToString:currentVersion]) {
             [SKStoreReviewController requestReview];
             [NSUserDefaults.standardUserDefaults setInteger:0 forKey:kReviewWorthyActionCountKey];
