@@ -230,6 +230,7 @@
 }
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification {
+    [self dismissStageViewController:self.stageViewController animated:NO];
     [self dismissToolBoxManager:nil];
     [self unloadBlockViews];
     
